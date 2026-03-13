@@ -6,52 +6,249 @@
     <title>Masterpiece Generator</title>
     <meta
       name="description"
-      content="Masterpiece Generator: groovebox for fast idea generation, pattern randomization, and immediate WAV/MP3 export."
+      content="Masterpiece Generator is a desktop groovebox for fast loop ideation, deterministic randomization, and instant WAV/MP3 export."
     />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
     <link rel="stylesheet" href="assets/styles.css" />
   </head>
   <body>
     <main class="page">
       <header class="header">
-        <a class="brand" href="/">
-          <span class="logo-dot" aria-hidden="true"></span>
-          <p class="brand-title">Masterpiece Generator</p>
+        <a class="brand" href="/" aria-label="Masterpiece Generator home">
+          <span class="brand-emblem-wrap">
+            <span class="brand-emblem-mask">
+              <img class="brand-emblem" src="assets/img/mg-emblem.png?v=2" alt="Masterpiece Generator MG emblem" />
+            </span>
+          </span>
+          <div class="brand-text">
+            <p class="brand-title">Masterpiece Generator</p>
+            <p class="brand-sub">Seed-driven groovebox for fast ideas</p>
+          </div>
         </a>
         <nav class="nav" aria-label="Main">
-          <a href="/examples/">Examples</a>
+          <a href="/">Home</a>
+          <a href="#roadmap">Roadmap</a>
           <a href="/guides/">Guides</a>
           <a href="/legal/license.html">License</a>
         </nav>
       </header>
 
-      <section class="hero">
-        <p class="kicker">mgen.fun</p>
-        <h1>Generate groove ideas fast, then shape them like an instrument.</h1>
-        <p class="lead">
-          Kick/snare/hats/toms, dual bass, staged melodic slots, deterministic random, and one-click export.
-          Built for quick loops that are already mix-usable.
-        </p>
-        <div class="cta-row">
-          <a class="btn btn-primary" href="#download">Download</a>
-          <a class="btn btn-secondary" href="/guides/">Start in 5 minutes</a>
-          <a class="btn btn-secondary" href="#buy">Buy License</a>
+      <section class="hero home-hero">
+        <div class="hero-copy">
+          <p class="kicker">mgen.fun</p>
+          <h1>Start with a sketch, finish with a masterpiece</h1>
+          <p class="lead">
+            No AI prompts, no sample packs. MG synthesizes drums, bass, and melodic slots internally,
+            with randomization that stays musical, fresh, and controllable.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#download">Download Latest Build</a>
+          </div>
+          <p class="cta-subrow">
+            <a href="#buy">Buy License</a>
+            <span aria-hidden="true">•</span>
+            <a href="/guides/first-5-minutes/">First 5 Minutes</a>
+          </p>
+          <div class="stat-row">
+            <span class="chip">algorithmic generation, not AI</span>
+            <span class="chip">chaos + euclid rhythms</span>
+            <span class="chip">internal synths, no samples</span>
+            <span class="chip">hands-on sequencer</span>
+            <span class="chip">deep synth tweaking</span>
+            <span class="chip">render to WAV or MP3</span>
+            <span class="chip">pattern bank</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="tour">
+        <h2>Why MG feels like an instrument</h2>
+        <p>Direct controls, synth-generated sound, and stable random that you can actually keep.</p>
+        <div class="grid">
+          <article class="card">
+            <h3>No AI, No Samples</h3>
+            <p>No prompt-driven generation and no sample library dependency. Sound comes from the built-in synth engines.</p>
+          </article>
+          <article class="card">
+            <h3>Two Independent Random Paths</h3>
+            <p>Randomize rhythm/groove with pattern controls, and randomize instrument sound separately with sound controls.</p>
+          </article>
+          <article class="card">
+            <h3>Full Step Control</h3>
+            <p>Per-step strong-beat accents, slide, gate, and trigger probability with dedicated Chaos and Euclid rhythm controls.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="sequencer">
+        <h2>Random, sequencer and instrument set</h2>
+        <p>Algorithmic random, full step sequencing, and deep synth control.</p>
+        <div class="grid">
+          <article class="card card-priority">
+            <h3>Random engine</h3>
+            <ul class="inline-list">
+              <li>Chaos and Euclid scales shape groove density and rhythm distribution</li>
+              <li>Multiple groove families plus dedicated bass and lead generation algorithms</li>
+              <li>No AI prompts and no sample packs, pure algorithmic track construction</li>
+              <li>Results stay musical, fresh, and non-repetitive</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Sequencer</h3>
+            <ul class="inline-list">
+              <li>Pattern Bank with 46 pattern slots</li>
+              <li>Pattern length adjustable from 8 to 32 steps</li>
+              <li>Per-step trigger, slide, probability, accent, and note editing</li>
+              <li>Build and refine grooves step by step</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Instrument set</h3>
+            <ul class="inline-list">
+              <li>Kicks, Snares, HiHats, Toms, Basses, Leads, Percussions</li>
+              <li>Randomize instrument sound independently from rhythm</li>
+              <li>Dedicated synth controls for each instrument</li>
+              <li>Sculpt tone manually from sketch to final mix</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="audio-demos">
+        <h2>Random audio demos</h2>
+        <p class="audio-demos-lead">Short sketches. Hit play and cycle through random exports.</p>
+        <article class="card audio-player-card" data-audio-random-player>
+          <div class="audio-controls">
+            <button type="button" class="btn btn-primary" data-audio-action="play">Play random demo</button>
+            <button type="button" class="btn btn-secondary" data-audio-action="next">Next random</button>
+            <button type="button" class="btn btn-secondary" data-audio-action="stop">Stop</button>
+          </div>
+          <p class="audio-status" data-audio-status>Ready: demos loaded</p>
+          <audio class="audio-player" data-audio-element controls preload="none"></audio>
+        </article>
+      </section>
+
+      <section class="section" id="showcase">
+        <h2>Watch the workflow</h2>
+        <p>Three raw screen captures of randomizing and editing one track flow. No genre labels.</p>
+        <div class="grid media-grid">
+          <article class="card media-card">
+            <div class="media-frame">
+              <video
+                class="demo-video"
+                controls
+                preload="metadata"
+                playsinline
+                poster="assets/img/sequencer-overview.jpg"
+              >
+                <source src="assets/video/sequencer-overview.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </article>
+          <article class="card media-card">
+            <div class="media-frame">
+              <video
+                class="demo-video"
+                controls
+                preload="metadata"
+                playsinline
+                poster="assets/img/sound-slot-editor.jpg"
+              >
+                <source src="assets/video/sound-slot-editor.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </article>
+          <article class="card media-card">
+            <div class="media-frame">
+              <video
+                class="demo-video"
+                controls
+                preload="metadata"
+                playsinline
+                poster="assets/img/live-workflow-clip.jpg"
+              >
+                <source src="assets/video/live-workflow-clip.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="workflow">
+        <h2>Fast loop pipeline</h2>
+        <div class="grid">
+          <article class="card">
+            <h3>1. Randomize Rhythm/Groove</h3>
+            <p>Use seed + chaos to generate kick/snare/hat/bass movement and lock the groove direction.</p>
+          </article>
+          <article class="card">
+            <h3>2. Randomize Instrument Sound</h3>
+            <p>Regenerate drum and tonal timbre separately without throwing away your pattern structure.</p>
+          </article>
+          <article class="card">
+            <h3>3. Edit and Export</h3>
+            <p>Manual final tweaks, then render WAV or MP3 320k for DAW arrangement or sample chopping.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="roadmap">
+        <h2>Development roadmap</h2>
+        <p>What I am building next in Masterpiece Generator.</p>
+        <div class="grid roadmap-grid">
+          <article class="card phase-card">
+            <p class="phase-tag">Now</p>
+            <h3>Website + Conversion Funnel</h3>
+            <p>Ship the full mgen.fun flow with clear product messaging, guides, and strong install path.</p>
+          </article>
+          <article class="card phase-card">
+            <p class="phase-tag">Next</p>
+            <h3>Web Checkout + License Issuance</h3>
+            <p>Finish checkout creation, webhook verification, idempotent payment processing, and key issuance.</p>
+          </article>
+          <article class="card phase-card">
+            <p class="phase-tag">Planned</p>
+            <h3>Song Mode + Live Chaining</h3>
+            <p>Add pattern chaining and repeat-aware arrangement workflow above the current pattern bank.</p>
+          </article>
+          <article class="card phase-card">
+            <p class="phase-tag">Planned</p>
+            <h3>Sound and Workflow Polish</h3>
+            <p>Improve voicing defaults, UI ergonomics, and faster end-to-end random-to-export iteration.</p>
+          </article>
+          <article class="card phase-card">
+            <p class="phase-tag">Planned</p>
+            <h3>MIDI In/Out + Sync</h3>
+            <p>Add MIDI input/output, clock sync, and tighter external hardware integration workflow.</p>
+          </article>
+          <article class="card phase-card">
+            <p class="phase-tag">Planned</p>
+            <h3>Parameter Locks</h3>
+            <p>Add per-step parameter locks for deeper motion and automation inside one pattern.</p>
+          </article>
+          <article class="card phase-card">
+            <p class="phase-tag">Planned</p>
+            <h3>Steam Deck Verified</h3>
+            <p>Complete controls, performance, and UX pass for official Steam Deck verification.</p>
+          </article>
         </div>
       </section>
 
       <section class="section" id="download">
-        <h2>Downloads</h2>
-        <p>Always points to the latest public release artifacts.</p>
+        <h2>Download Masterpiece Generator</h2>
         <div class="grid">
           <article class="card">
             <h3>Linux x86_64</h3>
-            <p>Archive with binary, icon, and desktop shortcut installer script.</p>
+            <p>Archive with binary, icon, and desktop installer script.</p>
             <p class="meta">
               <a href="https://github.com/mikhailpodshivalov/generator_release/releases/latest/download/generator-linux-x86_64.tar.gz">Download .tar.gz</a>
             </p>
           </article>
           <article class="card">
             <h3>Windows x86_64</h3>
-            <p>Portable ZIP archive containing `generator.exe`.</p>
+            <p>Portable ZIP archive containing <code>generator.exe</code>.</p>
             <p class="meta">
               <a href="https://github.com/mikhailpodshivalov/generator_release/releases/latest/download/generator-windows-x86_64.zip">Download .zip</a>
             </p>
@@ -62,6 +259,10 @@
             <p class="meta">
               <a href="https://github.com/mikhailpodshivalov/generator_release/releases/latest/download/generator-macos-x86_64.tar.gz">Download .tar.gz</a>
             </p>
+            <p class="meta">
+              If macOS blocks first launch, run in Terminal from the folder that contains the app:
+              <code>xattr -dr com.apple.quarantine "Masterpiece Generator.app"</code>
+            </p>
           </article>
           <article class="card">
             <h3>macOS Apple Silicon</h3>
@@ -69,50 +270,79 @@
             <p class="meta">
               <a href="https://github.com/mikhailpodshivalov/generator_release/releases/latest/download/generator-macos-aarch64.tar.gz">Download .tar.gz</a>
             </p>
-          </article>
-        </div>
-        <div class="notice">
-          In-app updates are powered by
-          <a href="https://github.com/mikhailpodshivalov/generator_release/releases/latest/download/updates.json">updates.json</a>.
-        </div>
-      </section>
-
-      <section class="section">
-        <h2>Quick tour</h2>
-        <div class="grid">
-          <article class="card">
-            <h3>Deterministic random</h3>
-            <p>Same seed gives repeatable results. Chaos expands variation without total collapse.</p>
-          </article>
-          <article class="card">
-            <h3>Fast sound shaping</h3>
-            <p>Per-slot model controls, tonal note editing, and export-ready defaults.</p>
-          </article>
-          <article class="card">
-            <h3>Export workflow</h3>
-            <p>Render MP3 320k or WAV with pattern repeat count directly from app.</p>
+            <p class="meta">
+              If macOS blocks first launch, run in Terminal from the folder that contains the app:
+              <code>xattr -dr com.apple.quarantine "Masterpiece Generator.app"</code>
+            </p>
           </article>
         </div>
       </section>
 
       <section class="section" id="buy">
-        <h2>License and payment</h2>
-        <p>Checkout integration with NOWPayments is the next step in rollout.</p>
-        <ul class="inline-list">
-          <li>Current flow: activate in-app using email + key.</li>
-          <li>Planned flow: website checkout -> webhook -> auto-issued license key.</li>
-          <li>Status and implementation checklist live in project roadmap stage 8.2.</li>
-        </ul>
+        <h2>License and checkout</h2>
+        <p>Roadmap stage 8.2 is focused on full web checkout flow and auto-issued keys.</p>
+        <div class="grid">
+          <article class="card">
+            <h3>Current stable path</h3>
+            <p>Use in-app <strong>Buy License</strong>, then activate with email + key.</p>
+            <p class="meta"><a href="/guides/export-activation/">Open activation guide</a></p>
+          </article>
+          <article class="card">
+            <h3>Web checkout rollout</h3>
+            <p>Target flow: site - checkout - webhook - license issued - app activate.</p>
+            <p class="meta">Payment provider target: NOWPayments.</p>
+          </article>
+          <article class="card">
+            <h3>Track project progress</h3>
+            <p>Follow upcoming milestones and implementation priorities on the public roadmap section.</p>
+            <p class="meta"><a href="#roadmap">Open roadmap</a> and <a href="/guides/">guides</a>.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="faq">
+        <h2>FAQ</h2>
+        <div class="faq-grid">
+          <details class="qa" open>
+            <summary>How long is the demo?</summary>
+            <p>Demo period is 7 days, starting after first successful activation.</p>
+          </details>
+          <details class="qa">
+            <summary>How many devices per license?</summary>
+            <p>Current target policy is up to 3 devices per key.</p>
+          </details>
+          <details class="qa">
+            <summary>What if payment is done but key is delayed?</summary>
+            <p>Keep the same email and retry status check. The order flow is designed for webhook delay retries.</p>
+          </details>
+          <details class="qa">
+            <summary>Where should I start learning?</summary>
+            <p>Open <a href="/guides/first-5-minutes/">First 5 minutes</a>, then continue with Random Workflow.</p>
+          </details>
+          <details class="qa">
+            <summary>Is MG subscription-based?</summary>
+            <p>No subscription. MG is licensed directly, and random generation is not limited.</p>
+          </details>
+          <details class="qa">
+            <summary>Is MG lightweight to run?</summary>
+            <p>MG is a native desktop app written in Rust and optimized for low CPU and memory usage.</p>
+          </details>
+          <details class="qa">
+            <summary>Who is behind MG?</summary>
+            <p>Masterpiece Generator is built and maintained as an independent solo project.</p>
+          </details>
+        </div>
       </section>
 
       <footer class="footer">
         <span>Masterpiece Generator</span>
-        <a href="/examples/">Examples</a>
+        <a href="#roadmap">Roadmap</a>
         <a href="/guides/">Guides</a>
         <a href="/legal/privacy.html">Privacy</a>
         <a href="/legal/terms.html">Terms</a>
         <a href="/legal/license.html">License</a>
       </footer>
     </main>
+    <script src="assets/random-audio-player.js"></script>
   </body>
 </html>

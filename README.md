@@ -29,6 +29,18 @@ Open http://localhost:8080
 - `.github/workflows/ci.yml`: basic structural checks
 - `.github/workflows/deploy-cloudflare-pages.yml`: production deploy
 
+## Media Drop Zones
+
+- Brand emblem: `assets/img/mg-emblem.png` (copied from root `assets/app_icon.png`)
+- Hero artwork (generated from UI screenshot): `assets/img/hero-interface-art.jpg`
+- Landing video 1: `assets/video/sequencer-overview.mp4`
+- Landing video 1 poster: `assets/img/sequencer-overview.jpg`
+- Landing video 2: `assets/video/sound-slot-editor.mp4`
+- Landing video 2 poster: `assets/img/sound-slot-editor.jpg`
+- Landing video 3: `assets/video/live-workflow-clip.mp4`
+- Landing video 3 poster: `assets/img/live-workflow-clip.jpg`
+- Example audio clips: `assets/audio/*.mp3`
+
 ## Deploy to `mgen.fun` (Cloudflare Pages)
 
 1. In Cloudflare, create a Pages project named `mgen-fun` (Pages -> Create -> Direct Upload).
