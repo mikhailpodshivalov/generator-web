@@ -3,6 +3,7 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 required=(
   "index.html"
+  "site.webmanifest"
   "assets/styles.css"
   "examples/index.html"
   "guides/index.html"
