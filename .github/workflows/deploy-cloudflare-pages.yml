@@ -14,6 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Generate audio manifest
+        run: ./scripts/generate-audio-manifest.sh
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:

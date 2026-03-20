@@ -21,6 +21,8 @@ for file in "${required[@]}"; do
   fi
 done
 
+./scripts/generate-audio-manifest.sh --check
+
 if ! grep -q "generator_release/releases/latest/download/generator-linux-x86_64.tar.gz" index.html; then
   echo "missing linux download link in index.html"
   exit 1

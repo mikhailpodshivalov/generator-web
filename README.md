@@ -40,6 +40,8 @@ Open http://localhost:8080
 - Landing video 3: `assets/video/live-workflow-clip.mp4`
 - Landing video 3 poster: `assets/img/live-workflow-clip.jpg`
 - Example audio clips: `assets/audio/*.mp3`
+- Random demo player source list is generated from `assets/audio/*.mp3` into `assets/audio-manifest.json`
+  via `./scripts/generate-audio-manifest.sh` (CI validates this file is up to date).
 
 ## Deploy to `mgen.fun` (Cloudflare Pages)
 

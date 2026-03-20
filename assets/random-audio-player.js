@@ -14,24 +14,46 @@
     return;
   }
 
-  const tracks = [
-    "assets/audio/3435345.mp3",
-    "assets/audio/6876786.mp3",
-    "assets/audio/7987987987.mp3",
-    "assets/audio/87667565.mp3",
-    "assets/audio/876876876.mp3",
-    "assets/audio/898989898.mp3",
-    "assets/audio/untitled-masterpiece-pattern-01.mp3",
-    "assets/audio/untitled-masterpiece-pattern-02.mp3",
-    "assets/audio/untitled-masterpiece-pattern-03.mp3",
-    "assets/audio/123231231.mp3",
-  ];
+  const AUDIO_MANIFEST_PATH = "assets/audio-manifest.json";
+  const tracks = [];
 
   let queue = [];
   let currentTrackIndex = -1;
 
   function setStatus(text) {
     status.textContent = text;
+  }
+
+  async function loadTracksFromManifest() {
+    setStatus("Loading demos...");
+    playButton.disabled = true;
+    nextButton.disabled = true;
+    stopButton.disabled = true;
+
+    try {
+      const response = await fetch(AUDIO_MANIFEST_PATH, { cache: "no-store" });
+      if (!response.ok) {
+        throw new Error(`manifest request failed: HTTP ${response.status}`);
+      }
+
+      const payload = await response.json();
+      const manifestTracks = Array.isArray(payload?.tracks) ? payload.tracks : [];
+      const normalized = manifestTracks
+        .filter((track) => typeof track === "string")
+        .map((track) => track.trim())
+        .filter((track) => track.length > 0);
+
+      if (normalized.length === 0) {
+        throw new Error("manifest has no tracks");
+      }
+
+      tracks.splice(0, tracks.length, ...normalized);
+      setStatus(`Ready: ${tracks.length} demos loaded`);
+      playButton.disabled = false;
+      nextButton.disabled = false;
+    } catch (_error) {
+      setStatus("No audio demos found. Rebuild audio manifest.");
+    }
   }
 
   function shuffledTrackIndexes() {
@@ -65,13 +87,20 @@
   }
 
   async function playRandom() {
+    if (tracks.length === 0) {
+      setStatus("No audio demos available");
+      return;
+    }
+
     const index = nextTrackIndex();
+    stopButton.disabled = false;
     await playTrack(index);
   }
 
   function stopPlayback() {
     audio.pause();
     audio.currentTime = 0;
+    stopButton.disabled = true;
     setStatus("Playback stopped");
   }
 
@@ -94,4 +123,6 @@
   audio.addEventListener("error", () => {
     setStatus("Playback error. Use next random.");
   });
+
+  void loadTracksFromManifest();
 })();
