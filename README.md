@@ -55,5 +55,5 @@ Open http://localhost:8080
 ## Next implementation steps
 
 1. Replace placeholder examples with real audio files and screenshots.
-2. Add NOWPayments checkout entry points and order status flow to CTA buttons.
-3. Add post-purchase license activation guide with screenshots.
+2. Keep web checkout wired to `https://api.mgen.fun` (`create-checkout` + `order-status`) and monitor errors after deploy.
+3. Add post-purchase license activation guide with screenshots and troubleshooting cases.

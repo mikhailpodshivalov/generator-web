@@ -6,7 +6,7 @@
     <title>Masterpiece Generator</title>
     <meta
       name="description"
-      content="Masterpiece Generator is a desktop groovebox for fast loop ideation, deterministic randomization, and instant WAV/MP3 export."
+      content="Masterpiece Generator is a desktop groovebox with song mode, random FX, random p-locks, MIDI Out + CC p-lock, per-slot and full-track randomization, and instant WAV/MP3 export."
     />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png" />
@@ -57,6 +57,10 @@
             <span class="chip">internal synths, no samples</span>
             <span class="chip">hands-on sequencer</span>
             <span class="chip">deep synth tweaking</span>
+            <span class="chip">song mode + pattern chaining</span>
+            <span class="chip">random FX + p-lock rand</span>
+            <span class="chip">midi out + cc p-lock shipped</span>
+            <span class="chip">slot rand + full-track rand</span>
             <span class="chip">render to WAV or MP3</span>
             <span class="chip">pattern bank</span>
           </div>
@@ -72,12 +76,12 @@
             <p>No prompt-driven generation and no sample library dependency. Sound comes from the built-in synth engines.</p>
           </article>
           <article class="card">
-            <h3>Two Independent Random Paths</h3>
-            <p>Randomize rhythm/groove with pattern controls, and randomize instrument sound separately with sound controls.</p>
+            <h3>Global + Per-Slot Random</h3>
+            <p>Randomize pattern, sound, FX, and p-locks for the whole track, or target a single slot without destroying the rest.</p>
           </article>
           <article class="card">
-            <h3>Full Step Control</h3>
-            <p>Per-step strong-beat accents, slide, gate, and trigger probability with dedicated Chaos and Euclid rhythm controls.</p>
+            <h3>Song Mode + Full Step Control</h3>
+            <p>Build chained song structure with repeat-aware steps, then edit trigger, accent, slide, probability, note, and p-lock motion per step.</p>
           </article>
         </div>
       </section>
@@ -90,6 +94,8 @@
             <h3>Random engine</h3>
             <ul class="inline-list">
               <li>Chaos and Euclid scales shape groove density and rhythm distribution</li>
+              <li>Independent random layers: Pattern, Instrument, FX, and P-lock</li>
+              <li>Every random layer supports global reroll and per-slot reroll</li>
               <li>Multiple groove families plus dedicated bass and lead generation algorithms</li>
               <li>No AI prompts and no sample packs, pure algorithmic track construction</li>
               <li>Results stay musical, fresh, and non-repetitive</li>
@@ -100,7 +106,9 @@
             <ul class="inline-list">
               <li>Pattern Bank with 46 pattern slots</li>
               <li>Pattern length adjustable from 8 to 32 steps</li>
+              <li>Song Mode with pattern chaining and repeat-aware progression</li>
               <li>Per-step trigger, slide, probability, accent, and note editing</li>
+              <li>MIDI Out with per-step CC p-lock lanes</li>
               <li>Build and refine grooves step by step</li>
             </ul>
           </article>
@@ -109,6 +117,9 @@
             <ul class="inline-list">
               <li>Kicks, Snares, HiHats, Toms, Basses, Leads, Percussions</li>
               <li>Randomize instrument sound independently from rhythm</li>
+              <li>Random FX for each slot and for the whole track in one action</li>
+              <li>Random p-lock motion with deterministic seed behavior</li>
+              <li>Route movement to external gear through MIDI Out + CC p-lock</li>
               <li>Dedicated synth controls for each instrument</li>
               <li>Sculpt tone manually from sketch to final mix</li>
             </ul>
@@ -184,12 +195,12 @@
             <p>Use seed + chaos to generate kick/snare/hat/bass movement and lock the groove direction.</p>
           </article>
           <article class="card">
-            <h3>2. Randomize Instrument Sound</h3>
-            <p>Regenerate drum and tonal timbre separately without throwing away your pattern structure.</p>
+            <h3>2. Randomize Sound, FX, and P-Lock</h3>
+            <p>Regenerate timbre, FX chain, and p-lock motion globally or only on the selected slot.</p>
           </article>
           <article class="card">
-            <h3>3. Edit and Export</h3>
-            <p>Manual final tweaks, then render WAV or MP3 320k for DAW arrangement or sample chopping.</p>
+            <h3>3. Chain Song and Export</h3>
+            <p>Build song flow from pattern bank, do final tweaks, then render WAV or MP3 320k for DAW arrangement or sampling.</p>
           </article>
         </div>
       </section>
@@ -199,19 +210,19 @@
         <p>What I am building next in Masterpiece Generator.</p>
         <div class="grid roadmap-grid">
           <article class="card phase-card">
-            <p class="phase-tag">Now</p>
-            <h3>Website + Conversion Funnel</h3>
-            <p>Ship the full mgen.fun flow with clear product messaging, guides, and strong install path.</p>
-          </article>
-          <article class="card phase-card">
-            <p class="phase-tag">Next</p>
-            <h3>Web Checkout + License Issuance</h3>
-            <p>Finish checkout creation, webhook verification, idempotent payment processing, and key issuance.</p>
-          </article>
-          <article class="card phase-card">
-            <p class="phase-tag">Planned</p>
+            <p class="phase-tag">Shipped</p>
             <h3>Song Mode + Live Chaining</h3>
-            <p>Add pattern chaining and repeat-aware arrangement workflow above the current pattern bank.</p>
+            <p>Pattern chaining, repeat-aware song steps, and playback-follow mode above the pattern bank.</p>
+          </article>
+          <article class="card phase-card">
+            <p class="phase-tag">Shipped</p>
+            <h3>Random FX + P-Lock Layers</h3>
+            <p>Random FX and random p-lock are first-class actions with both per-slot and full-track scope.</p>
+          </article>
+          <article class="card phase-card">
+            <p class="phase-tag">Shipped</p>
+            <h3>MIDI Out + CC P-Lock</h3>
+            <p>MIDI Out is available now, including per-step CC p-lock lanes for external hardware motion.</p>
           </article>
           <article class="card phase-card">
             <p class="phase-tag">Planned</p>
@@ -220,18 +231,23 @@
           </article>
           <article class="card phase-card">
             <p class="phase-tag">Planned</p>
-            <h3>MIDI In/Out + Sync</h3>
-            <p>Add MIDI input/output, clock sync, and tighter external hardware integration workflow.</p>
+            <h3>MIDI In + Deeper Sync</h3>
+            <p>Expand MIDI input workflow and tighter end-to-end sync behavior for larger external rigs.</p>
           </article>
           <article class="card phase-card">
             <p class="phase-tag">Planned</p>
-            <h3>Parameter Locks</h3>
-            <p>Add per-step parameter locks for deeper motion and automation inside one pattern.</p>
+            <h3>Per-Track Song Export + MIDI for DAW</h3>
+            <p>Export full songs as per-track stems plus a standard MIDI file for fast arrangement in any DAW.</p>
           </article>
           <article class="card phase-card">
-            <p class="phase-tag">Planned</p>
-            <h3>Steam Deck Verified</h3>
-            <p>Complete controls, performance, and UX pass for official Steam Deck verification.</p>
+            <p class="phase-tag">Now</p>
+            <h3>Web Checkout + License Issuance Hardening</h3>
+            <p>Stabilize create-checkout, webhook reliability, idempotent payment processing, and order-status UX.</p>
+          </article>
+          <article class="card phase-card">
+            <p class="phase-tag">Next</p>
+            <h3>Website + Conversion Funnel Polish</h3>
+            <p>Tighten landing copy, guide flow, and release onboarding from first visit to activated license.</p>
           </article>
         </div>
       </section>
@@ -278,26 +294,77 @@
         </div>
       </section>
 
-      <section class="section" id="buy">
+      <section class="section" id="buy" data-license-api-base="https://api.mgen.fun">
         <h2>License and checkout</h2>
-        <p>Roadmap stage 8.2 is focused on full web checkout flow and auto-issued keys.</p>
-        <div class="grid">
+        <p>Web checkout is live. Pay from the site, then activate in-app with the same email and issued key.</p>
+        <div class="grid buy-grid">
+          <article class="card card-priority">
+            <h3>Start web checkout</h3>
+            <form class="checkout-form" data-checkout-form novalidate>
+              <label class="field-label" for="checkout-email">Email</label>
+              <input
+                id="checkout-email"
+                class="field-input"
+                type="email"
+                name="email"
+                placeholder="you@example.com"
+                autocomplete="email"
+                required
+              />
+              <label class="field-label" for="checkout-provider">Payment provider</label>
+              <select id="checkout-provider" class="field-input field-select" name="provider">
+                <option value="lemonsqueezy">Lemon Squeezy</option>
+                <option value="nowpayments">NOWPayments</option>
+              </select>
+              <button type="submit" class="btn btn-primary">Create checkout</button>
+            </form>
+            <p class="meta checkout-status" data-checkout-status>Enter your email to generate secure checkout.</p>
+            <p class="meta checkout-order" data-checkout-order hidden></p>
+          </article>
           <article class="card">
-            <h3>Current stable path</h3>
-            <p>Use in-app <strong>Buy License</strong>, then activate with email + key.</p>
+            <h3>Check order status</h3>
+            <form class="checkout-form" data-order-status-form novalidate>
+              <label class="field-label" for="status-email">Email</label>
+              <input
+                id="status-email"
+                class="field-input"
+                type="email"
+                name="email"
+                placeholder="you@example.com"
+                autocomplete="email"
+                required
+              />
+              <label class="field-label" for="status-order-id">Order ID</label>
+              <input
+                id="status-order-id"
+                class="field-input"
+                type="text"
+                name="order_id"
+                placeholder="ord_XXXXXX_XXXXXX"
+                autocomplete="off"
+                required
+              />
+              <label class="field-label" for="status-provider">Provider</label>
+              <select id="status-provider" class="field-input field-select" name="provider">
+                <option value="lemonsqueezy">Lemon Squeezy</option>
+                <option value="nowpayments">NOWPayments</option>
+              </select>
+              <button type="submit" class="btn btn-secondary">Check status</button>
+            </form>
+            <p class="meta checkout-status" data-order-status>Use order ID from checkout to track payment and key issuance.</p>
+            <p class="meta checkout-license" data-order-license hidden></p>
+          </article>
+          <article class="card">
+            <h3>Activation flow</h3>
+            <p>After status changes to <strong>paid</strong>, open in-app <strong>License</strong> and activate with email + key.</p>
             <p class="meta"><a href="/guides/export-activation/">Open activation guide</a></p>
-          </article>
-          <article class="card">
-            <h3>Web checkout rollout</h3>
-            <p>Target flow: site - checkout - webhook - license issued - app activate.</p>
-            <p class="meta">Payment provider target: NOWPayments.</p>
-          </article>
-          <article class="card">
-            <h3>Track project progress</h3>
-            <p>Follow upcoming milestones and implementation priorities on the public roadmap section.</p>
-            <p class="meta"><a href="#roadmap">Open roadmap</a> and <a href="/guides/">guides</a>.</p>
+            <p class="meta"><a href="#roadmap">Roadmap</a> and <a href="/guides/">guides</a></p>
           </article>
         </div>
+        <p class="notice">
+          Checkout API endpoint: <code>https://api.mgen.fun</code>. If checkout is temporarily unavailable,
+          use in-app <strong>Buy License</strong> as fallback.
+        </p>
       </section>
 
       <section class="section" id="faq">
@@ -310,6 +377,14 @@
           <details class="qa">
             <summary>How many devices per license?</summary>
             <p>Current target policy is up to 3 devices per key.</p>
+          </details>
+          <details class="qa">
+            <summary>Can I randomize only one track?</summary>
+            <p>Yes. Pattern, sound, FX, and p-lock randomization are available both per-slot and for the whole track.</p>
+          </details>
+          <details class="qa">
+            <summary>Is MIDI Out with CC p-lock already available?</summary>
+            <p>Yes. The current build includes MIDI Out and per-step CC p-lock lanes for external gear automation.</p>
           </details>
           <details class="qa">
             <summary>What if payment is done but key is delayed?</summary>
@@ -344,5 +419,6 @@
       </footer>
     </main>
     <script src="assets/random-audio-player.js"></script>
+    <script src="assets/checkout.js"></script>
   </body>
 </html>
