@@ -24,8 +24,8 @@ done
 
 ./scripts/generate-audio-manifest.sh --check
 
-if ! grep -q "github.com/masterpieceGenerator/generator_release/releases/latest/download/generator-linux-x86_64.tar.gz" index.html; then
-  echo "missing linux download link in index.html"
+if grep -q "generator_release/releases/latest/download/" index.html; then
+  echo "download links should be hidden in index.html"
   exit 1
 fi
 

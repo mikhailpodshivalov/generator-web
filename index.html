@@ -48,10 +48,10 @@
             with randomization that stays musical, fresh, and controllable.
           </p>
           <div class="cta-row">
-            <a class="btn btn-primary" href="#download">Download Latest Build</a>
+            <a class="btn btn-primary" href="/guides/first-5-minutes/">Open quick start guide</a>
           </div>
           <p class="cta-subrow">
-            <a href="#buy">Buy License</a>
+            <a href="#roadmap">Roadmap</a>
             <span aria-hidden="true">•</span>
             <a href="/guides/first-5-minutes/">First 5 Minutes</a>
           </p>
@@ -244,9 +244,9 @@
             <p>Export full songs as per-track stems plus a standard MIDI file for fast arrangement in any DAW.</p>
           </article>
           <article class="card phase-card">
-            <p class="phase-tag">Now</p>
-            <h3>Web Checkout + License Issuance Hardening</h3>
-            <p>Stabilize create-checkout, webhook reliability, idempotent payment processing, and order-status UX.</p>
+            <p class="phase-tag">Soon</p>
+            <h3>Restore Download + Checkout Blocks</h3>
+            <p>The public download and web checkout sections are temporarily hidden and will be brought back in the next website update.</p>
           </article>
           <article class="card phase-card">
             <p class="phase-tag">Next</p>
@@ -254,121 +254,6 @@
             <p>Tighten landing copy, guide flow, and release onboarding from first visit to activated license.</p>
           </article>
         </div>
-      </section>
-
-      <section class="section" id="download">
-        <h2>Download Masterpiece Generator</h2>
-        <div class="grid">
-          <article class="card">
-            <h3>Linux x86_64</h3>
-            <p>Archive with binary, icon, and desktop installer script.</p>
-            <p class="meta">
-              <a href="https://github.com/masterpieceGenerator/generator_release/releases/latest/download/generator-linux-x86_64.tar.gz">Download .tar.gz</a>
-            </p>
-          </article>
-          <article class="card">
-            <h3>Windows x86_64</h3>
-            <p>Portable ZIP archive containing <code>generator.exe</code>.</p>
-            <p class="meta">
-              <a href="https://github.com/masterpieceGenerator/generator_release/releases/latest/download/generator-windows-x86_64.zip">Download .zip</a>
-            </p>
-          </article>
-          <article class="card">
-            <h3>macOS Intel</h3>
-            <p>App bundle archive for Intel Macs.</p>
-            <p class="meta">
-              <a href="https://github.com/masterpieceGenerator/generator_release/releases/latest/download/generator-macos-x86_64.tar.gz">Download .tar.gz</a>
-            </p>
-            <p class="meta">
-              If macOS blocks first launch, run in Terminal from the folder that contains the app:
-              <code>xattr -dr com.apple.quarantine "Masterpiece Generator.app"</code>
-            </p>
-          </article>
-          <article class="card">
-            <h3>macOS Apple Silicon</h3>
-            <p>App bundle archive for M1/M2/M3 Macs.</p>
-            <p class="meta">
-              <a href="https://github.com/masterpieceGenerator/generator_release/releases/latest/download/generator-macos-aarch64.tar.gz">Download .tar.gz</a>
-            </p>
-            <p class="meta">
-              If macOS blocks first launch, run in Terminal from the folder that contains the app:
-              <code>xattr -dr com.apple.quarantine "Masterpiece Generator.app"</code>
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section" id="buy" data-license-api-base="https://api.mgen.fun">
-        <h2>License and checkout</h2>
-        <p>Web checkout is live. Pay from the site, then activate in-app with the same email and issued key.</p>
-        <div class="grid buy-grid">
-          <article class="card card-priority">
-            <h3>Start web checkout</h3>
-            <form class="checkout-form" data-checkout-form novalidate>
-              <label class="field-label" for="checkout-email">Email</label>
-              <input
-                id="checkout-email"
-                class="field-input"
-                type="email"
-                name="email"
-                placeholder="you@example.com"
-                autocomplete="email"
-                required
-              />
-              <label class="field-label" for="checkout-provider">Payment provider</label>
-              <select id="checkout-provider" class="field-input field-select" name="provider">
-                <option value="lemonsqueezy">Lemon Squeezy</option>
-                <option value="nowpayments">NOWPayments</option>
-              </select>
-              <button type="submit" class="btn btn-primary">Create checkout</button>
-            </form>
-            <p class="meta checkout-status" data-checkout-status>Enter your email to generate secure checkout.</p>
-            <p class="meta checkout-order" data-checkout-order hidden></p>
-          </article>
-          <article class="card">
-            <h3>Check order status</h3>
-            <form class="checkout-form" data-order-status-form novalidate>
-              <label class="field-label" for="status-email">Email</label>
-              <input
-                id="status-email"
-                class="field-input"
-                type="email"
-                name="email"
-                placeholder="you@example.com"
-                autocomplete="email"
-                required
-              />
-              <label class="field-label" for="status-order-id">Order ID</label>
-              <input
-                id="status-order-id"
-                class="field-input"
-                type="text"
-                name="order_id"
-                placeholder="ord_XXXXXX_XXXXXX"
-                autocomplete="off"
-                required
-              />
-              <label class="field-label" for="status-provider">Provider</label>
-              <select id="status-provider" class="field-input field-select" name="provider">
-                <option value="lemonsqueezy">Lemon Squeezy</option>
-                <option value="nowpayments">NOWPayments</option>
-              </select>
-              <button type="submit" class="btn btn-secondary">Check status</button>
-            </form>
-            <p class="meta checkout-status" data-order-status>Use order ID from checkout to track payment and key issuance.</p>
-            <p class="meta checkout-license" data-order-license hidden></p>
-          </article>
-          <article class="card">
-            <h3>Activation flow</h3>
-            <p>After status changes to <strong>paid</strong>, open in-app <strong>License</strong> and activate with email + key.</p>
-            <p class="meta"><a href="/guides/export-activation/">Open activation guide</a></p>
-            <p class="meta"><a href="#roadmap">Roadmap</a> and <a href="/guides/">guides</a></p>
-          </article>
-        </div>
-        <p class="notice">
-          Checkout API endpoint: <code>https://api.mgen.fun</code>. If checkout is temporarily unavailable,
-          use in-app <strong>Buy License</strong> as fallback.
-        </p>
       </section>
 
       <section class="section" id="faq">
@@ -389,10 +274,6 @@
           <details class="qa">
             <summary>Is MIDI Out with CC p-lock already available?</summary>
             <p>Yes. The current build includes MIDI Out and per-step CC p-lock lanes for external gear automation.</p>
-          </details>
-          <details class="qa">
-            <summary>What if payment is done but key is delayed?</summary>
-            <p>Keep the same email and retry status check. The order flow is designed for webhook delay retries.</p>
           </details>
           <details class="qa">
             <summary>Where should I start learning?</summary>
@@ -423,6 +304,5 @@
       </footer>
     </main>
     <script src="assets/random-audio-player.js"></script>
-    <script src="assets/checkout.js"></script>
   </body>
 </html>
