@@ -106,13 +106,18 @@
     event.preventDefault();
 
     const email = readFieldValue(orderStatusForm, "email");
-    const orderId = readFieldValue(orderStatusForm, "order_id");
+    const orderIdInput = readFieldValue(orderStatusForm, "order_id");
     const provider = normalizeProvider(readFieldValue(orderStatusForm, "provider"));
+    const { orderId, resolvedProvider } = resolveOrderLookupInput({
+      email,
+      orderId: orderIdInput,
+      provider,
+    });
 
     await executeOrderStatusLookup({
       email,
       orderId,
-      provider,
+      provider: resolvedProvider,
       autoTriggered: false,
     });
   });
@@ -123,7 +128,11 @@
       return;
     }
     if (!orderId) {
-      setStatus(orderStatus, "Enter a valid order ID.", true);
+      setStatus(
+        orderStatus,
+        "Order ID is auto-filled after Buy. For restore, open Advanced and paste order ID.",
+        true
+      );
       return;
     }
 
@@ -195,6 +204,39 @@
     } finally {
       disableButton(statusSubmitButton, false);
     }
+  }
+
+  function resolveOrderLookupInput({ email, orderId, provider }) {
+    const normalizedProvider = normalizeProvider(provider);
+    const directOrderId = safeString(orderId).trim();
+    if (directOrderId) {
+      return {
+        orderId: directOrderId,
+        resolvedProvider: normalizedProvider,
+      };
+    }
+
+    const lastOrder = readLastOrder();
+    if (!lastOrder) {
+      return { orderId: "", resolvedProvider: normalizedProvider };
+    }
+
+    const requestedEmail = safeString(email).trim().toLowerCase();
+    const lastOrderEmail = safeString(lastOrder.email).trim().toLowerCase();
+    if (!requestedEmail || requestedEmail !== lastOrderEmail) {
+      return { orderId: "", resolvedProvider: normalizedProvider };
+    }
+
+    const lastOrderId = safeString(lastOrder.order_id).trim();
+    if (!lastOrderId) {
+      return { orderId: "", resolvedProvider: normalizedProvider };
+    }
+
+    setFieldValue(orderStatusForm, "order_id", lastOrderId);
+    return {
+      orderId: lastOrderId,
+      resolvedProvider: normalizeProvider(firstNonEmpty(normalizedProvider, lastOrder.provider)),
+    };
   }
 
   function initializeAutoOrderStatusCheck() {

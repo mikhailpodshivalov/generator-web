@@ -245,17 +245,25 @@
                 required
               />
               <input name="provider" type="hidden" value="lemonsqueezy" />
-              <label class="field-label" for="order-id">Order ID</label>
-              <input
-                class="field-input"
-                id="order-id"
-                name="order_id"
-                type="text"
-                placeholder="ord_XXXXXX_XXXXXX"
-                required
-              />
               <button class="btn btn-secondary" type="submit">Check status</button>
+              <details class="checkout-advanced">
+                <summary>Advanced restore (manual Order ID)</summary>
+                <div class="checkout-form checkout-advanced-form">
+                  <label class="field-label" for="order-id">Order ID</label>
+                  <input
+                    class="field-input"
+                    id="order-id"
+                    name="order_id"
+                    type="text"
+                    placeholder="ord_XXXXXX_XXXXXX"
+                  />
+                </div>
+              </details>
             </form>
+            <p class="checkout-hint">
+              Order ID is filled automatically after Buy. Use restore only when checking from another
+              browser or device.
+            </p>
             <p class="checkout-status" data-order-status aria-live="polite"></p>
             <div class="checkout-license-row" data-order-license-row hidden>
               <p class="checkout-license" data-order-license></p>
