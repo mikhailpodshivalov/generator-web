@@ -794,191 +794,229 @@ h1 {
   font-weight: 700;
 }
 
-.guide-shell {
-  max-width: 860px;
+.guide-page {
+  width: min(960px, 100%);
   margin-left: auto;
   margin-right: auto;
+  padding: 18px;
+  background:
+    linear-gradient(170deg, rgba(35, 43, 58, 0.88), rgba(25, 34, 49, 0.86)),
+    radial-gradient(circle at 90% -20%, rgba(73, 190, 218, 0.09), rgba(0, 0, 0, 0) 46%);
+  border: 1px solid rgba(117, 146, 197, 0.28);
+}
+
+.guide-page h2 {
+  margin: 0 0 4px;
+  font-size: clamp(1.45rem, 2.2vw, 1.95rem);
+  line-height: 1.1;
+  color: #e7edf8;
+  text-align: left;
 }
 
 .guide-philosophy {
   margin-top: 10px;
-  border: 1px solid rgba(86, 182, 194, 0.65);
+  border: 2px solid rgba(73, 190, 218, 0.82);
   border-radius: 12px;
-  background: linear-gradient(155deg, rgba(38, 42, 52, 0.95), rgba(26, 31, 42, 0.95));
-  padding: 14px;
+  background: rgba(37, 45, 56, 0.86);
+  padding: 10px 12px;
+  text-align: center;
 }
 
 .guide-philosophy-title {
   margin: 0;
-  color: rgb(86, 182, 194);
-  font-size: 1.04rem;
-  font-weight: 800;
+  color: rgb(73, 190, 218);
+  font-size: 1.1rem;
+  font-weight: 700;
 }
 
 .guide-philosophy-sub {
-  margin: 8px 0 0;
-  color: #b8c8de;
-  font-size: 0.96rem;
+  margin: 6px 0 0;
+  color: #d0d8e8;
+  font-size: 0.9rem;
+  line-height: 1.25;
 }
 
 .guide-step {
-  margin-top: 14px;
-  border: 1px solid rgba(116, 160, 234, 0.28);
-  border-radius: 12px;
-  background: linear-gradient(160deg, rgba(16, 25, 47, 0.94), rgba(10, 18, 35, 0.92));
-  padding: 14px;
+  margin-top: 12px;
+  border: 1px solid rgba(118, 147, 194, 0.24);
+  border-radius: 11px;
+  background: rgba(25, 34, 49, 0.64);
+  padding: 12px 12px 11px;
 }
 
 .guide-step-head {
   display: flex;
-  gap: 10px;
-  align-items: flex-start;
+  gap: 8px;
+  align-items: center;
 }
 
 .guide-step-head h3 {
-  margin: 1px 0 0;
-  font-size: 1.02rem;
-  line-height: 1.34;
+  margin: 0;
+  font-size: 1.08rem;
+  line-height: 1.2;
+  color: #dce5f7;
 }
 
 .guide-step-badge {
   display: inline-flex;
-  width: 25px;
-  height: 25px;
+  width: 22px;
+  height: 22px;
   align-items: center;
   justify-content: center;
   border-radius: 999px;
   font-weight: 800;
-  font-size: 0.82rem;
-  color: #081120;
+  font-size: 0.78rem;
   flex: 0 0 auto;
 }
 
 .guide-badge-yellow {
-  background: rgb(200, 160, 40);
+  color: #2c2a1f;
+  background: rgb(216, 180, 46);
 }
 
 .guide-badge-purple {
+  color: #f5ecff;
   background: rgb(148, 96, 186);
-  color: #f5eeff;
 }
 
 .guide-subtitle {
-  margin: 10px 0 0;
-  color: #cfdcf3;
-  font-size: 0.92rem;
+  margin: 8px 0 0;
+  color: #c0cade;
+  font-size: 0.95rem;
+  line-height: 1.22;
 }
 
 .guide-hint {
-  margin: 8px 0 0;
-  color: rgb(140, 136, 128);
-  font-size: 0.86rem;
+  margin: 6px 0 0;
+  color: #9da9c1;
+  font-size: 0.9rem;
+  line-height: 1.22;
 }
 
 .guide-rand-grid {
-  margin-top: 9px;
+  margin-top: 8px;
   display: grid;
-  gap: 8px;
+  gap: 6px;
 }
 
 .guide-rand-row {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  min-height: 28px;
 }
 
 .guide-rand-desc {
   color: rgb(176, 172, 162);
-  font-size: 0.88rem;
+  font-size: 0.91rem;
+  line-height: 1.2;
 }
 
 .guide-pill {
+  appearance: none;
+  font-family: inherit;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 999px;
+  border-radius: 7px;
   border: 1px solid transparent;
-  padding: 5px 10px;
-  font-size: 0.76rem;
+  padding: 4px 11px;
+  min-width: 88px;
+  font-size: 0.86rem;
   font-weight: 700;
   line-height: 1;
-  letter-spacing: 0.01em;
-  min-width: 96px;
+  white-space: nowrap;
+  cursor: default;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.guide-pill:focus {
+  outline: none;
 }
 
 .guide-pill-cyan {
-  background: rgba(47, 118, 128, 0.95);
-  border-color: rgba(86, 182, 194, 0.95);
-  color: #dffaff;
+  background: rgba(33, 120, 138, 0.98) !important;
+  border-color: rgba(74, 195, 226, 0.96) !important;
+  color: #deffff !important;
 }
 
 .guide-pill-green {
-  background: rgba(32, 97, 64, 0.95);
-  border-color: rgba(109, 255, 141, 0.95);
-  color: #e0ffe8;
+  background: rgba(52, 126, 69, 0.98) !important;
+  border-color: rgba(122, 212, 139, 0.96) !important;
+  color: #e6ffe9 !important;
 }
 
 .guide-pill-purple {
-  background: rgba(75, 47, 106, 0.95);
-  border-color: rgba(185, 136, 230, 0.95);
-  color: #f2e5ff;
+  background: rgba(99, 61, 138, 0.98) !important;
+  border-color: rgba(176, 124, 232, 0.96) !important;
+  color: #f5e7ff !important;
 }
 
 .guide-pill-amber {
-  background: rgba(110, 84, 28, 0.95);
-  border-color: rgba(255, 199, 79, 0.95);
-  color: #fff0ca;
+  background: rgba(126, 96, 34, 0.98) !important;
+  border-color: rgba(223, 180, 80, 0.96) !important;
+  color: #fff1d4 !important;
 }
 
 .guide-pill-rose {
-  background: rgba(124, 54, 69, 0.95);
-  border-color: rgba(255, 129, 165, 0.95);
-  color: #ffe1ea;
+  background: rgba(131, 58, 84, 0.98) !important;
+  border-color: rgba(214, 117, 160, 0.96) !important;
+  color: #ffe5ef !important;
 }
 
 .guide-pill-bank {
-  background: rgba(106, 84, 28, 0.95);
-  border-color: rgba(214, 186, 96, 0.95);
-  color: #fff3d4;
+  background: rgba(126, 96, 34, 0.98) !important;
+  border-color: rgba(223, 180, 80, 0.96) !important;
+  color: #fff1d4 !important;
 }
 
 .guide-pill-song {
-  background: rgba(40, 98, 60, 0.95);
-  border-color: rgba(116, 208, 136, 0.95);
-  color: #e4ffec;
+  background: rgba(52, 126, 69, 0.98) !important;
+  border-color: rgba(122, 212, 139, 0.96) !important;
+  color: #e6ffe9 !important;
 }
 
-.guide-row-pills {
-  margin-top: 8px;
+.guide-inline-action {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   gap: 8px;
 }
 
-.guide-arrow-pill {
+.guide-track-row {
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.guide-icon-pill {
   min-width: 0;
-  padding-left: 9px;
-  padding-right: 9px;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border-radius: 7px;
+  font-size: 0.94rem;
 }
 
 .guide-dot {
   display: inline-block;
-  width: 9px;
-  height: 9px;
+  width: 8px;
+  height: 8px;
   border-radius: 999px;
-  margin-right: 6px;
   vertical-align: middle;
+  margin: 0 6px 1px;
 }
 
 .guide-dot-yellow {
-  background: rgba(214, 186, 96, 0.95);
-  box-shadow: 0 0 10px rgba(214, 186, 96, 0.5);
+  background: rgba(223, 180, 80, 0.95);
+  box-shadow: 0 0 8px rgba(223, 180, 80, 0.45);
 }
 
 .guide-dot-green {
-  background: rgba(116, 208, 136, 0.95);
-  box-shadow: 0 0 10px rgba(116, 208, 136, 0.5);
+  background: rgba(122, 212, 139, 0.95);
+  box-shadow: 0 0 8px rgba(122, 212, 139, 0.45);
 }
 
 @media (max-width: 760px) {
@@ -1017,10 +1055,6 @@ h1 {
     width: 100%;
   }
 
-  .guide-step {
-    padding: 12px;
-  }
-
   .guide-step-head h3 {
     font-size: 0.96rem;
   }
@@ -1037,6 +1071,11 @@ h1 {
 
   .guide-rand-desc {
     font-size: 0.84rem;
+  }
+
+  .guide-page {
+    width: 100%;
+    padding: 14px;
   }
 }
 

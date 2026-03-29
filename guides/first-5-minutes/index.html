@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>1 min guide - Masterpiece Generator</title>
-    <link rel="stylesheet" href="../../assets/styles.css" />
+    <link rel="stylesheet" href="../../assets/styles.css?v=guide-20260329-site" />
   </head>
   <body>
     <main class="page">
@@ -13,12 +13,10 @@
           <span class="logo-dot" aria-hidden="true"></span>
           <p class="brand-title">Masterpiece Generator</p>
         </a>
-        <nav class="nav">
-          <a href="/guides/">All guides</a>
-        </nav>
       </header>
-      <section class="section guide-shell">
+      <section class="section guide-page">
         <h2>1 min guide</h2>
+
         <article class="guide-philosophy">
           <p class="guide-philosophy-title">This is not a DAW — it's an idea generator.</p>
           <p class="guide-philosophy-sub">Randomize, tweak by hand, then use your ideas to create full masterpieces.</p>
@@ -34,32 +32,33 @@
           <p class="guide-subtitle">Random whole pattern (all tracks at once):</p>
           <div class="guide-rand-grid">
             <div class="guide-rand-row">
-              <span class="guide-pill guide-pill-cyan">Super rand</span>
+              <button class="guide-pill guide-pill-cyan" type="button">Super rand</button>
               <span class="guide-rand-desc">everything + BPM, root note &amp; scale</span>
             </div>
             <div class="guide-rand-row">
-              <span class="guide-pill guide-pill-green">Pattern rand</span>
+              <button class="guide-pill guide-pill-green" type="button">Pattern rand</button>
               <span class="guide-rand-desc">notes &amp; steps only</span>
             </div>
             <div class="guide-rand-row">
-              <span class="guide-pill guide-pill-purple">Instr rand</span>
+              <button class="guide-pill guide-pill-purple" type="button">Instr rand</button>
               <span class="guide-rand-desc">instruments &amp; synth settings</span>
             </div>
             <div class="guide-rand-row">
-              <span class="guide-pill guide-pill-amber">FX rand</span>
+              <button class="guide-pill guide-pill-amber" type="button">FX rand</button>
               <span class="guide-rand-desc">delay, reverb, filter, drive</span>
             </div>
             <div class="guide-rand-row">
-              <span class="guide-pill guide-pill-rose">P-lock rand</span>
+              <button class="guide-pill guide-pill-rose" type="button">P-lock rand</button>
               <span class="guide-rand-desc">per-step parameter locks</span>
             </div>
           </div>
           <p class="guide-subtitle">Single track row:</p>
-          <div class="guide-row-pills">
-            <span class="guide-arrow-pill guide-pill-green">→ pattern</span>
-            <span class="guide-arrow-pill guide-pill-purple">→ sound</span>
-            <span class="guide-arrow-pill guide-pill-amber">→ fx</span>
-            <span class="guide-arrow-pill guide-pill-rose">→ p-lock</span>
+          <div class="guide-track-row">
+            <button class="guide-icon-pill guide-pill-green" type="button">↻</button>
+            <button class="guide-icon-pill guide-pill-purple" type="button">↻</button>
+            <button class="guide-icon-pill guide-pill-amber" type="button">↻</button>
+            <button class="guide-icon-pill guide-pill-rose" type="button">↻</button>
+            <span class="guide-rand-desc">pattern / sound / fx / p-lock for one row</span>
           </div>
           <p class="guide-hint">Or tweak by hand: place notes, ⚙ for synth, right-click step for slide / p-lock</p>
           <p class="guide-hint">Tip: slots 7–8 can be any instrument — swap hats for leads and get wild combos</p>
@@ -70,13 +69,12 @@
             <span class="guide-step-badge guide-badge-yellow">2</span>
             <h3>Save what you like (Bank mode)</h3>
           </header>
-          <p class="guide-subtitle">
-            <span class="guide-pill guide-pill-bank">Save to Bank</span>
+          <p class="guide-subtitle guide-inline-action">
+            <button class="guide-pill guide-pill-bank" type="button">Save to Bank</button>
             <span class="guide-rand-desc">keep pattern in a bank slot</span>
           </p>
           <p class="guide-hint">99 bank slots, each holds a pattern and a song</p>
-          <p class="guide-hint"><span class="guide-dot guide-dot-yellow"></span> = has pattern</p>
-          <p class="guide-hint"><span class="guide-dot guide-dot-green"></span> = has song</p>
+          <p class="guide-hint"><span class="guide-dot guide-dot-yellow"></span> = has pattern <span class="guide-dot guide-dot-green"></span> = has song</p>
           <p class="guide-hint">Save the whole bank to a file, export pattern as MP3/WAV via Render</p>
         </article>
 
@@ -86,8 +84,8 @@
             <h3>Generate a full song (Song mode)</h3>
           </header>
           <p class="guide-subtitle">Auto-generates a full song from your saved bank pattern</p>
-          <p class="guide-subtitle">
-            <span class="guide-pill guide-pill-song">Build Song</span>
+          <p class="guide-subtitle guide-inline-action">
+            <button class="guide-pill guide-pill-song" type="button">Build Song</button>
             <span class="guide-rand-desc">auto-arranges intro → buildup → drop → outro</span>
           </p>
           <p class="guide-hint">Edit any part, re-randomize individual patterns freely</p>
@@ -102,6 +100,7 @@
           <p class="guide-subtitle">Route generated patterns to hardware or software synths via MIDI</p>
           <p class="guide-hint">Assign a MIDI channel per instrument + up to 4 CC locks per step</p>
         </article>
+
       </section>
     </main>
   </body>
