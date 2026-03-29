@@ -209,7 +209,7 @@
 
       <section class="section" id="buy" data-license-api-base="https://api.mgen.fun">
         <h2>Buy License</h2>
-        <p>Complete secure checkout, then fetch your key and activate inside the app.</p>
+        <p>Complete secure checkout. Activation key is sent to your email and can also be fetched here.</p>
         <div class="grid buy-grid">
           <article class="card">
             <h3>Create checkout</h3>
@@ -227,6 +227,7 @@
               <input name="provider" type="hidden" value="lemonsqueezy" />
               <button class="btn btn-primary" type="submit">Buy license</button>
             </form>
+            <p class="checkout-hint">Use a real email. Activation key will be delivered there after payment.</p>
             <p class="checkout-status" data-checkout-status aria-live="polite"></p>
             <p class="checkout-order" data-checkout-order hidden></p>
           </article>
@@ -256,7 +257,25 @@
               <button class="btn btn-secondary" type="submit">Check status</button>
             </form>
             <p class="checkout-status" data-order-status aria-live="polite"></p>
-            <p class="checkout-license" data-order-license hidden></p>
+            <div class="checkout-license-row" data-order-license-row hidden>
+              <p class="checkout-license" data-order-license></p>
+              <button class="btn btn-secondary checkout-copy-btn" type="button" data-copy-license>
+                Copy key
+              </button>
+            </div>
+            <p class="checkout-copy-status" data-copy-status aria-live="polite"></p>
+          </article>
+          <article class="card">
+            <h3>Activate in app</h3>
+            <ol class="checkout-steps">
+              <li>Open app and click <strong>License</strong>.</li>
+              <li>Paste your checkout email and license key, then click <strong>Activate</strong>.</li>
+              <li>Click <strong>Refresh</strong> if payment was just completed.</li>
+            </ol>
+            <p class="checkout-hint">
+              Random generation works only with active trial or activated license.
+            </p>
+            <a class="btn btn-secondary checkout-help-btn" href="/legal/license.html">Open license info</a>
           </article>
         </div>
       </section>

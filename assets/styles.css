@@ -721,6 +721,12 @@ h1 {
   margin-top: 2px;
 }
 
+.checkout-hint {
+  margin-top: 10px;
+  font-size: 0.84rem;
+  color: #94afd6;
+}
+
 .checkout-status {
   min-height: 1.3em;
 }
@@ -728,6 +734,47 @@ h1 {
 .checkout-order,
 .checkout-license {
   color: #a9e2ff;
+}
+
+.checkout-license-row {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 10px;
+}
+
+.checkout-license-row .checkout-license {
+  margin: 0;
+  flex: 1 1 220px;
+  min-width: 0;
+  word-break: break-all;
+}
+
+.checkout-copy-btn {
+  padding: 7px 10px;
+  font-size: 0.8rem;
+}
+
+.checkout-copy-status {
+  min-height: 1.2em;
+  margin-top: 6px;
+  font-size: 0.83rem;
+  color: #8ecfff;
+}
+
+.checkout-steps {
+  margin: 10px 0 0;
+  padding-left: 18px;
+  color: var(--muted);
+  display: grid;
+  gap: 8px;
+  font-size: 0.92rem;
+}
+
+.checkout-help-btn {
+  margin-top: 12px;
+  width: 100%;
 }
 
 .status-ok {
@@ -1052,6 +1099,14 @@ h1 {
   }
 
   .btn {
+    width: 100%;
+  }
+
+  .checkout-license-row {
+    align-items: stretch;
+  }
+
+  .checkout-copy-btn {
     width: 100%;
   }
 

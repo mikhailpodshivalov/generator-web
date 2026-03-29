@@ -3,6 +3,8 @@
 (function () {
   const CHECKOUT_STORAGE_KEY = "mg_checkout_last_order_v1";
   const DEVICE_STORAGE_KEY = "mg_checkout_device_id_v1";
+  const PENDING_RETURN_STORAGE_KEY = "mg_checkout_pending_return_v1";
+  const AUTO_CHECK_SESSION_KEY = "mg_checkout_auto_checked_order_v1";
   const DEFAULT_API_BASE = "https://api.mgen.fun";
   const DEFAULT_PROVIDER = "lemonsqueezy";
 
@@ -20,7 +22,10 @@
   const checkoutStatus = checkoutSection.querySelector("[data-checkout-status]");
   const checkoutOrder = checkoutSection.querySelector("[data-checkout-order]");
   const orderStatus = checkoutSection.querySelector("[data-order-status]");
+  const orderLicenseRow = checkoutSection.querySelector("[data-order-license-row]");
   const orderLicense = checkoutSection.querySelector("[data-order-license]");
+  const copyLicenseButton = checkoutSection.querySelector("[data-copy-license]");
+  const copyStatus = checkoutSection.querySelector("[data-copy-status]");
 
   const checkoutSubmitButton = checkoutForm.querySelector("button[type='submit']");
   const statusSubmitButton = orderStatusForm.querySelector("button[type='submit']");
@@ -31,7 +36,11 @@
       DEFAULT_API_BASE
   );
 
+  let currentLicenseKey = "";
+
   hydrateFormsFromStorage();
+  bindCopyLicenseButton();
+  initializeAutoOrderStatusCheck();
 
   checkoutForm.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -64,12 +73,16 @@
       }
 
       const orderId = safeString(response.payload.order_id);
-      persistLastOrder({
+      const createdOrder = {
         email,
         provider: safeString(response.payload.provider) || provider,
         order_id: orderId,
-      });
+      };
+
+      persistLastOrder(createdOrder);
+      persistPendingReturn(createdOrder);
       syncStatusFormFromLastOrder();
+
       if (orderId) {
         setOrderLabel(orderId);
       }
@@ -96,6 +109,15 @@
     const orderId = readFieldValue(orderStatusForm, "order_id");
     const provider = normalizeProvider(readFieldValue(orderStatusForm, "provider"));
 
+    await executeOrderStatusLookup({
+      email,
+      orderId,
+      provider,
+      autoTriggered: false,
+    });
+  });
+
+  async function executeOrderStatusLookup({ email, orderId, provider, autoTriggered }) {
     if (!isValidEmail(email)) {
       setStatus(orderStatus, "Enter the same email used during checkout.", true);
       return;
@@ -106,8 +128,16 @@
     }
 
     disableButton(statusSubmitButton, true);
-    setStatus(orderStatus, "Checking order status...", false);
-    hideNode(orderLicense, true);
+    clearLicenseOutput();
+    setOrderLabel(orderId);
+
+    setStatus(
+      orderStatus,
+      autoTriggered
+        ? "Return detected. Checking order status automatically..."
+        : "Checking order status...",
+      false
+    );
 
     try {
       const response = await postJson(`${apiBase}/v1/payment/order-status`, {
@@ -125,26 +155,30 @@
         return;
       }
 
-      persistLastOrder({
-        email,
-        provider,
-        order_id: orderId,
-      });
+      persistLastOrder({ email, provider, order_id: orderId });
 
       if (!response.payload.found) {
-        setStatus(orderStatus, "Order not found yet. Recheck after payment confirmation.", true);
+        setStatus(
+          orderStatus,
+          autoTriggered
+            ? "Order is not visible yet. Wait a moment and check again."
+            : "Order not found yet. Recheck after payment confirmation.",
+          true
+        );
         return;
       }
 
       const statusText = safeString(response.payload.status) || "pending";
       const message = safeString(response.payload.message);
+
       if (response.payload.licensed && response.payload.license_key) {
         setStatus(
           orderStatus,
           message || `Payment confirmed (${statusText}). License key is ready.`,
           false
         );
-        setLicenseLabel(response.payload.license_key);
+        setLicenseLabel(safeString(response.payload.license_key));
+        clearPendingReturn();
       } else {
         setStatus(
           orderStatus,
@@ -161,7 +195,178 @@
     } finally {
       disableButton(statusSubmitButton, false);
     }
-  });
+  }
+
+  function initializeAutoOrderStatusCheck() {
+    const autoOrder = resolveAutoOrderForStatusCheck();
+    if (!autoOrder || !autoOrder.email || !autoOrder.order_id) {
+      return;
+    }
+
+    if (wasAutoCheckedThisSession(autoOrder.order_id)) {
+      return;
+    }
+
+    markAutoCheckedThisSession(autoOrder.order_id);
+    persistLastOrder(autoOrder);
+    syncStatusFormFromLastOrder();
+
+    executeOrderStatusLookup({
+      email: autoOrder.email,
+      orderId: autoOrder.order_id,
+      provider: autoOrder.provider,
+      autoTriggered: true,
+    });
+  }
+
+  function resolveAutoOrderForStatusCheck() {
+    const queryOrder = readOrderFromQuery();
+    const pendingOrder = readPendingReturn();
+    const lastOrder = readLastOrder();
+
+    if (!queryOrder && !pendingOrder) {
+      return null;
+    }
+
+    const orderId = firstNonEmpty(
+      queryOrder ? queryOrder.order_id : "",
+      pendingOrder ? pendingOrder.order_id : ""
+    );
+    if (!orderId) {
+      return null;
+    }
+
+    const email = firstNonEmpty(
+      queryOrder ? queryOrder.email : "",
+      pendingOrder ? pendingOrder.email : "",
+      lastOrder && lastOrder.order_id === orderId ? lastOrder.email : ""
+    );
+    if (!isValidEmail(email)) {
+      return null;
+    }
+
+    const provider = normalizeProvider(
+      firstNonEmpty(
+        queryOrder ? queryOrder.provider : "",
+        pendingOrder ? pendingOrder.provider : "",
+        lastOrder ? lastOrder.provider : ""
+      )
+    );
+
+    return {
+      email,
+      provider,
+      order_id: orderId,
+    };
+  }
+
+  function readOrderFromQuery() {
+    if (typeof window === "undefined") {
+      return null;
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const hasReturnHint =
+      params.has("order_id") ||
+      params.has("orderId") ||
+      params.has("checkout") ||
+      params.has("payment") ||
+      params.has("status");
+
+    if (!hasReturnHint) {
+      return null;
+    }
+
+    return {
+      email: safeString(params.get("email")).trim(),
+      provider: normalizeProvider(safeString(params.get("provider"))),
+      order_id: firstNonEmpty(params.get("order_id"), params.get("orderId")),
+    };
+  }
+
+  function bindCopyLicenseButton() {
+    if (!copyLicenseButton) {
+      return;
+    }
+
+    copyLicenseButton.addEventListener("click", async () => {
+      if (!currentLicenseKey) {
+        setCopyStatus("License key is empty.", true);
+        return;
+      }
+
+      const copied = await copyToClipboard(currentLicenseKey);
+      if (!copied) {
+        setCopyStatus("Copy failed. Select and copy key manually.", true);
+        return;
+      }
+
+      setCopyStatus("License key copied.", false);
+    });
+  }
+
+  function setOrderLabel(orderId) {
+    if (!checkoutOrder) {
+      return;
+    }
+    checkoutOrder.textContent = `Order ID: ${orderId}`;
+    hideNode(checkoutOrder, false);
+  }
+
+  function setLicenseLabel(licenseKey) {
+    if (!orderLicense) {
+      return;
+    }
+    currentLicenseKey = licenseKey;
+    orderLicense.textContent = `License key: ${licenseKey}`;
+    hideNode(orderLicenseRow, false);
+  }
+
+  function clearLicenseOutput() {
+    currentLicenseKey = "";
+    if (orderLicense) {
+      orderLicense.textContent = "";
+    }
+    hideNode(orderLicenseRow, true);
+    setCopyStatus("", false);
+  }
+
+  function setCopyStatus(text, isError) {
+    if (!copyStatus) {
+      return;
+    }
+    copyStatus.textContent = text;
+    copyStatus.classList.remove("status-ok", "status-error");
+    if (text) {
+      copyStatus.classList.add(isError ? "status-error" : "status-ok");
+    }
+  }
+
+  async function copyToClipboard(text) {
+    if (typeof navigator !== "undefined" && navigator.clipboard && navigator.clipboard.writeText) {
+      try {
+        await navigator.clipboard.writeText(text);
+        return true;
+      } catch (_error) {
+        // fall through to legacy copy path.
+      }
+    }
+
+    try {
+      const area = document.createElement("textarea");
+      area.value = text;
+      area.setAttribute("readonly", "");
+      area.style.position = "absolute";
+      area.style.left = "-9999px";
+      document.body.appendChild(area);
+      area.select();
+      const success = document.execCommand("copy");
+      document.body.removeChild(area);
+      return !!success;
+    } catch (_error) {
+      return false;
+    }
+  }
 
   function normalizeApiBase(base) {
     const normalized = safeString(base).trim().replace(/\/+$/, "");
@@ -175,6 +380,16 @@
 
   function safeString(value) {
     return typeof value === "string" ? value : "";
+  }
+
+  function firstNonEmpty(...values) {
+    for (const value of values) {
+      const trimmed = safeString(value).trim();
+      if (trimmed) {
+        return trimmed;
+      }
+    }
+    return "";
   }
 
   function readFieldValue(form, fieldName) {
@@ -207,22 +422,6 @@
       return;
     }
     node.hidden = hidden;
-  }
-
-  function setOrderLabel(orderId) {
-    if (!checkoutOrder) {
-      return;
-    }
-    checkoutOrder.textContent = `Order ID: ${orderId}`;
-    hideNode(checkoutOrder, false);
-  }
-
-  function setLicenseLabel(licenseKey) {
-    if (!orderLicense) {
-      return;
-    }
-    orderLicense.textContent = `License key: ${licenseKey}`;
-    hideNode(orderLicense, false);
   }
 
   function resolveDeviceId() {
@@ -260,6 +459,30 @@
     }
   }
 
+  function removeStorage(key) {
+    try {
+      window.localStorage.removeItem(key);
+    } catch (_error) {
+      // Ignore storage failures.
+    }
+  }
+
+  function readSessionStorage(key) {
+    try {
+      return window.sessionStorage.getItem(key) || "";
+    } catch (_error) {
+      return "";
+    }
+  }
+
+  function writeSessionStorage(key, value) {
+    try {
+      window.sessionStorage.setItem(key, value);
+    } catch (_error) {
+      // Ignore session storage failures.
+    }
+  }
+
   function readLastOrder() {
     const raw = readStorage(CHECKOUT_STORAGE_KEY);
     if (!raw) {
@@ -279,6 +502,59 @@
 
   function persistLastOrder(order) {
     writeStorage(CHECKOUT_STORAGE_KEY, JSON.stringify(order));
+  }
+
+  function readPendingReturn() {
+    const raw = readStorage(PENDING_RETURN_STORAGE_KEY);
+    if (!raw) {
+      return null;
+    }
+
+    try {
+      const parsed = JSON.parse(raw);
+      const createdAt = Number(parsed.created_at_ms || 0);
+      if (!Number.isFinite(createdAt) || createdAt <= 0) {
+        return null;
+      }
+
+      const maxAgeMs = 24 * 60 * 60 * 1000;
+      if (Date.now() - createdAt > maxAgeMs) {
+        removeStorage(PENDING_RETURN_STORAGE_KEY);
+        return null;
+      }
+
+      return {
+        email: safeString(parsed.email).trim(),
+        provider: normalizeProvider(parsed.provider),
+        order_id: safeString(parsed.order_id).trim(),
+      };
+    } catch (_error) {
+      return null;
+    }
+  }
+
+  function persistPendingReturn(order) {
+    writeStorage(
+      PENDING_RETURN_STORAGE_KEY,
+      JSON.stringify({
+        email: safeString(order.email).trim(),
+        provider: normalizeProvider(order.provider),
+        order_id: safeString(order.order_id).trim(),
+        created_at_ms: Date.now(),
+      })
+    );
+  }
+
+  function clearPendingReturn() {
+    removeStorage(PENDING_RETURN_STORAGE_KEY);
+  }
+
+  function wasAutoCheckedThisSession(orderId) {
+    return readSessionStorage(AUTO_CHECK_SESSION_KEY) === orderId;
+  }
+
+  function markAutoCheckedThisSession(orderId) {
+    writeSessionStorage(AUTO_CHECK_SESSION_KEY, orderId);
   }
 
   function hydrateFormsFromStorage() {
