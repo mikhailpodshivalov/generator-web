@@ -794,6 +794,193 @@ h1 {
   font-weight: 700;
 }
 
+.guide-shell {
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.guide-philosophy {
+  margin-top: 10px;
+  border: 1px solid rgba(86, 182, 194, 0.65);
+  border-radius: 12px;
+  background: linear-gradient(155deg, rgba(38, 42, 52, 0.95), rgba(26, 31, 42, 0.95));
+  padding: 14px;
+}
+
+.guide-philosophy-title {
+  margin: 0;
+  color: rgb(86, 182, 194);
+  font-size: 1.04rem;
+  font-weight: 800;
+}
+
+.guide-philosophy-sub {
+  margin: 8px 0 0;
+  color: #b8c8de;
+  font-size: 0.96rem;
+}
+
+.guide-step {
+  margin-top: 14px;
+  border: 1px solid rgba(116, 160, 234, 0.28);
+  border-radius: 12px;
+  background: linear-gradient(160deg, rgba(16, 25, 47, 0.94), rgba(10, 18, 35, 0.92));
+  padding: 14px;
+}
+
+.guide-step-head {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.guide-step-head h3 {
+  margin: 1px 0 0;
+  font-size: 1.02rem;
+  line-height: 1.34;
+}
+
+.guide-step-badge {
+  display: inline-flex;
+  width: 25px;
+  height: 25px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 0.82rem;
+  color: #081120;
+  flex: 0 0 auto;
+}
+
+.guide-badge-yellow {
+  background: rgb(200, 160, 40);
+}
+
+.guide-badge-purple {
+  background: rgb(148, 96, 186);
+  color: #f5eeff;
+}
+
+.guide-subtitle {
+  margin: 10px 0 0;
+  color: #cfdcf3;
+  font-size: 0.92rem;
+}
+
+.guide-hint {
+  margin: 8px 0 0;
+  color: rgb(140, 136, 128);
+  font-size: 0.86rem;
+}
+
+.guide-rand-grid {
+  margin-top: 9px;
+  display: grid;
+  gap: 8px;
+}
+
+.guide-rand-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.guide-rand-desc {
+  color: rgb(176, 172, 162);
+  font-size: 0.88rem;
+}
+
+.guide-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  padding: 5px 10px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  min-width: 96px;
+}
+
+.guide-pill-cyan {
+  background: rgba(47, 118, 128, 0.95);
+  border-color: rgba(86, 182, 194, 0.95);
+  color: #dffaff;
+}
+
+.guide-pill-green {
+  background: rgba(32, 97, 64, 0.95);
+  border-color: rgba(109, 255, 141, 0.95);
+  color: #e0ffe8;
+}
+
+.guide-pill-purple {
+  background: rgba(75, 47, 106, 0.95);
+  border-color: rgba(185, 136, 230, 0.95);
+  color: #f2e5ff;
+}
+
+.guide-pill-amber {
+  background: rgba(110, 84, 28, 0.95);
+  border-color: rgba(255, 199, 79, 0.95);
+  color: #fff0ca;
+}
+
+.guide-pill-rose {
+  background: rgba(124, 54, 69, 0.95);
+  border-color: rgba(255, 129, 165, 0.95);
+  color: #ffe1ea;
+}
+
+.guide-pill-bank {
+  background: rgba(106, 84, 28, 0.95);
+  border-color: rgba(214, 186, 96, 0.95);
+  color: #fff3d4;
+}
+
+.guide-pill-song {
+  background: rgba(40, 98, 60, 0.95);
+  border-color: rgba(116, 208, 136, 0.95);
+  color: #e4ffec;
+}
+
+.guide-row-pills {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.guide-arrow-pill {
+  min-width: 0;
+  padding-left: 9px;
+  padding-right: 9px;
+}
+
+.guide-dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.guide-dot-yellow {
+  background: rgba(214, 186, 96, 0.95);
+  box-shadow: 0 0 10px rgba(214, 186, 96, 0.5);
+}
+
+.guide-dot-green {
+  background: rgba(116, 208, 136, 0.95);
+  box-shadow: 0 0 10px rgba(116, 208, 136, 0.5);
+}
+
 @media (max-width: 760px) {
   .page {
     width: min(1160px, 95vw);
@@ -828,6 +1015,28 @@ h1 {
 
   .btn {
     width: 100%;
+  }
+
+  .guide-step {
+    padding: 12px;
+  }
+
+  .guide-step-head h3 {
+    font-size: 0.96rem;
+  }
+
+  .guide-pill {
+    min-width: 0;
+  }
+
+  .guide-rand-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .guide-rand-desc {
+    font-size: 0.84rem;
   }
 }
 
