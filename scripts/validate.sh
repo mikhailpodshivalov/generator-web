@@ -24,8 +24,13 @@ done
 
 ./scripts/generate-audio-manifest.sh --check
 
-if grep -q "generator_release/releases/latest/download/" index.html; then
-  echo "download links should be hidden in index.html"
+if ! grep -q 'id="buy"' index.html; then
+  echo "checkout block (#buy) is missing in index.html"
+  exit 1
+fi
+
+if ! grep -q 'assets/checkout.js' index.html; then
+  echo "checkout script include is missing in index.html"
   exit 1
 fi
 

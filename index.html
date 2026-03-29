@@ -32,9 +32,10 @@
           </div>
         </a>
         <nav class="nav" aria-label="Main">
-          <a href="/">Home</a>
+          <a href="#buy">Buy</a>
+          <a href="#download">Download</a>
           <a href="#roadmap">Roadmap</a>
-          <a href="/guides/">Guides</a>
+          <a href="/guides/first-5-minutes/">Guides</a>
           <a href="/legal/license.html">License</a>
         </nav>
       </header>
@@ -48,13 +49,8 @@
             with randomization that stays musical, fresh, and controllable.
           </p>
           <div class="cta-row">
-            <a class="btn btn-primary" href="/guides/first-5-minutes/">Open quick start guide</a>
+            <a class="btn btn-primary" href="/guides/first-5-minutes/">Open 1 min guide</a>
           </div>
-          <p class="cta-subrow">
-            <a href="#roadmap">Roadmap</a>
-            <span aria-hidden="true">•</span>
-            <a href="/guides/first-5-minutes/">First 5 Minutes</a>
-          </p>
           <div class="stat-row">
             <span class="chip">algorithmic generation, not AI</span>
             <span class="chip">chaos + euclid rhythms</span>
@@ -62,6 +58,7 @@
             <span class="chip">hands-on sequencer</span>
             <span class="chip">deep synth tweaking</span>
             <span class="chip">song mode + pattern chaining</span>
+            <span class="chip">one-button full song generation</span>
             <span class="chip">random FX + p-lock rand</span>
             <span class="chip">midi out + cc p-lock shipped</span>
             <span class="chip">slot rand + full-track rand</span>
@@ -108,7 +105,7 @@
           <article class="card">
             <h3>Sequencer</h3>
             <ul class="inline-list">
-              <li>Pattern Bank with 46 pattern slots</li>
+              <li>Pattern Bank with 99 pattern slots</li>
               <li>Pattern length adjustable from 8 to 32 steps</li>
               <li>Song Mode with pattern chaining and repeat-aware progression</li>
               <li>Per-step trigger, slide, probability, accent, and note editing</li>
@@ -146,6 +143,7 @@
       </section>
 
       <section class="section" id="showcase">
+        <!-- TODO: replace all three showcase videos when new captures are ready -->
         <h2>Watch the workflow</h2>
         <p>Three raw screen captures of randomizing and editing one track flow. No genre labels.</p>
         <div class="grid media-grid">
@@ -158,7 +156,7 @@
                 playsinline
                 poster="assets/img/sequencer-overview.jpg"
               >
-                <source src="assets/video/sequencer-overview.mp4" type="video/mp4" />
+                <source src="assets/video/1.mp4" type="video/mp4" />
               </video>
             </div>
           </article>
@@ -171,7 +169,7 @@
                 playsinline
                 poster="assets/img/sound-slot-editor.jpg"
               >
-                <source src="assets/video/sound-slot-editor.mp4" type="video/mp4" />
+                <source src="assets/video/2.mp4" type="video/mp4" />
               </video>
             </div>
           </article>
@@ -184,7 +182,7 @@
                 playsinline
                 poster="assets/img/live-workflow-clip.jpg"
               >
-                <source src="assets/video/live-workflow-clip.mp4" type="video/mp4" />
+                <source src="assets/video/3.mp4" type="video/mp4" />
               </video>
             </div>
           </article>
@@ -203,14 +201,67 @@
             <p>Regenerate timbre, FX chain, and p-lock motion globally or only on the selected slot.</p>
           </article>
           <article class="card">
-            <h3>3. Chain Song and Export</h3>
-            <p>Build song flow from pattern bank, do final tweaks, then render WAV or MP3 320k for DAW arrangement or sampling.</p>
+            <h3>3. Generate, Edit, and Export Song</h3>
+            <p>Generate a full song, edit arrangement and details, then export WAV, MP3, and MIDI for DAW workflow.</p>
           </article>
         </div>
       </section>
 
-      <!-- Download section (hidden until ready — remove style="display:none" to show) -->
-      <section class="section" id="download" style="display:none">
+      <section class="section" id="buy" data-license-api-base="https://api.mgen.fun">
+        <h2>Buy License</h2>
+        <p>Complete secure checkout, then fetch your key and activate inside the app.</p>
+        <div class="grid buy-grid">
+          <article class="card">
+            <h3>Create checkout</h3>
+            <form class="checkout-form" data-checkout-form>
+              <label class="field-label" for="buy-email">Email</label>
+              <input
+                class="field-input"
+                id="buy-email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                placeholder="you@example.com"
+                required
+              />
+              <input name="provider" type="hidden" value="lemonsqueezy" />
+              <button class="btn btn-primary" type="submit">Buy license</button>
+            </form>
+            <p class="checkout-status" data-checkout-status aria-live="polite"></p>
+            <p class="checkout-order" data-checkout-order hidden></p>
+          </article>
+          <article class="card">
+            <h3>Check order and key</h3>
+            <form class="checkout-form" data-order-status-form>
+              <label class="field-label" for="order-email">Email</label>
+              <input
+                class="field-input"
+                id="order-email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                placeholder="same email as checkout"
+                required
+              />
+              <input name="provider" type="hidden" value="lemonsqueezy" />
+              <label class="field-label" for="order-id">Order ID</label>
+              <input
+                class="field-input"
+                id="order-id"
+                name="order_id"
+                type="text"
+                placeholder="ord_XXXXXX_XXXXXX"
+                required
+              />
+              <button class="btn btn-secondary" type="submit">Check status</button>
+            </form>
+            <p class="checkout-status" data-order-status aria-live="polite"></p>
+            <p class="checkout-license" data-order-license hidden></p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="download">
         <h2>Download</h2>
         <p>Native installers for all platforms. No subscription, no account required.</p>
         <div class="grid">
@@ -231,8 +282,8 @@
           </article>
           <article class="card">
             <h3>Linux</h3>
-            <p>Ubuntu / Debian (x86_64)</p>
-            <a class="btn btn-primary" href="https://github.com/masterpieceGenerator/generator_release/releases/latest/download/generator-linux-x86_64.deb">Download .deb package</a>
+            <p>Most Linux distros (x86_64)</p>
+            <a class="btn btn-primary" href="https://github.com/masterpieceGenerator/generator_release/releases/latest/download/generator-linux-x86_64.AppImage">Download .AppImage</a>
           </article>
         </div>
       </section>
@@ -263,23 +314,23 @@
           </article>
           <article class="card phase-card">
             <p class="phase-tag">Planned</p>
-            <h3>MIDI In + Deeper Sync</h3>
-            <p>Expand MIDI input workflow and tighter end-to-end sync behavior for larger external rigs.</p>
-          </article>
-          <article class="card phase-card">
-            <p class="phase-tag">Planned</p>
             <h3>Per-Track Song Export + MIDI for DAW</h3>
             <p>Export full songs as per-track stems plus a standard MIDI file for fast arrangement in any DAW.</p>
           </article>
           <article class="card phase-card">
-            <p class="phase-tag">Soon</p>
-            <h3>Restore Download + Checkout Blocks</h3>
-            <p>The public download and web checkout sections are temporarily hidden and will be brought back in the next website update.</p>
+            <p class="phase-tag">Planned</p>
+            <h3>Song Random Generation Algorithms</h3>
+            <p>Improve full-song random generation quality, section transitions, and repeatability under the same seed.</p>
           </article>
           <article class="card phase-card">
-            <p class="phase-tag">Next</p>
-            <h3>Website + Conversion Funnel Polish</h3>
-            <p>Tighten landing copy, guide flow, and release onboarding from first visit to activated license.</p>
+            <p class="phase-tag">Planned</p>
+            <h3>Android Version</h3>
+            <p>Prepare a native Android release with touch-friendly workflow and mobile performance tuning.</p>
+          </article>
+          <article class="card phase-card">
+            <p class="phase-tag">Planned</p>
+            <h3>Steam Deck Version</h3>
+            <p>Ship a Steam Deck optimized build with controls and UI tuned for handheld usage.</p>
           </article>
         </div>
       </section>
@@ -294,18 +345,6 @@
           <details class="qa">
             <summary>How many devices per license?</summary>
             <p>Current target policy is up to 3 devices per key.</p>
-          </details>
-          <details class="qa">
-            <summary>Can I randomize only one track?</summary>
-            <p>Yes. Pattern, sound, FX, and p-lock randomization are available both per-slot and for the whole track.</p>
-          </details>
-          <details class="qa">
-            <summary>Is MIDI Out with CC p-lock already available?</summary>
-            <p>Yes. The current build includes MIDI Out and per-step CC p-lock lanes for external gear automation.</p>
-          </details>
-          <details class="qa">
-            <summary>Where should I start learning?</summary>
-            <p>Open <a href="/guides/first-5-minutes/">First 5 minutes</a>, then continue with Random Workflow.</p>
           </details>
           <details class="qa">
             <summary>Is MG subscription-based?</summary>
@@ -324,13 +363,15 @@
 
       <footer class="footer">
         <span>Masterpiece Generator</span>
+        <a href="#buy">Buy</a>
+        <a href="#download">Download</a>
         <a href="#roadmap">Roadmap</a>
-        <a href="/guides/">Guides</a>
-        <a href="/legal/privacy.html">Privacy</a>
-        <a href="/legal/terms.html">Terms</a>
+        <a href="/guides/first-5-minutes/">Guides</a>
         <a href="/legal/license.html">License</a>
+        <a href="mailto:masterpiece_generator@proton.me">Contact: masterpiece_generator@proton.me</a>
       </footer>
     </main>
     <script src="assets/random-audio-player.js"></script>
+    <script src="assets/checkout.js"></script>
   </body>
 </html>
