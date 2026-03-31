@@ -71,6 +71,20 @@ a {
   padding: 26px 0 62px;
 }
 
+.top-notice {
+  margin: 0 0 14px;
+  padding: 10px 14px;
+  border: 1px solid rgba(255, 199, 79, 0.46);
+  border-radius: 12px;
+  background: linear-gradient(160deg, rgba(48, 35, 14, 0.78), rgba(34, 26, 13, 0.8));
+  color: var(--accent-gold);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
 @keyframes rise-in {
   from {
     opacity: 0;
