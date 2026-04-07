@@ -19,8 +19,7 @@
   </head>
   <body>
     <main class="page">
-      <p class="top-notice">cooming soon</p>
-      <header class="header">
+<header class="header">
         <a class="brand" href="/" aria-label="Masterpiece Generator home">
           <span class="brand-emblem-wrap">
             <span class="brand-emblem-mask">
@@ -33,6 +32,8 @@
           </div>
         </a>
         <nav class="nav" aria-label="Main">
+          <a href="#download">Download 7-day demo</a>
+          <a href="#buy" class="nav-buy">Buy $8.99</a>
           <a href="#roadmap">Roadmap</a>
           <a href="/guides/first-5-minutes/">Guides</a>
           <a href="/legal/license.html">License</a>
@@ -64,6 +65,56 @@
             <span class="chip">render to WAV or MP3</span>
             <span class="chip">pattern bank</span>
           </div>
+        </div>
+      </section>
+
+      <section class="section section-download" id="download">
+        <h2>Download 7-day demo</h2>
+        <p>One-time payment of <span class="price-highlight">$8.99</span> — all platforms, all future updates included. Buy below.</p>
+        <div class="grid download-grid">
+          <article class="card download-card">
+            <h3>Windows x64</h3>
+            <p>Installer for Windows 10/11.</p>
+            <div class="cta-row">
+              <a
+                class="btn btn-primary"
+                href="https://github.com/masterpieceGenerator/generator_release/releases/latest/download/generator-windows-x86_64-setup.exe"
+                target="_blank"
+                rel="noopener"
+              >
+                Download .exe
+              </a>
+            </div>
+            <p class="download-note">SmartScreen may ask to confirm — click "More info → Run anyway".</p>
+          </article>
+          <article class="card download-card">
+            <h3>macOS Apple Silicon</h3>
+            <p>Signed package for M1/M2/M3/M4.</p>
+            <div class="cta-row">
+              <a
+                class="btn btn-primary"
+                href="https://github.com/masterpieceGenerator/generator_release/releases/latest/download/generator-macos-aarch64.pkg"
+                target="_blank"
+                rel="noopener"
+              >
+                Download .pkg
+              </a>
+            </div>
+          </article>
+          <article class="card download-card">
+            <h3>Linux x64</h3>
+            <p>AppImage for x86_64 Linux.</p>
+            <div class="cta-row">
+              <a
+                class="btn btn-primary"
+                href="https://github.com/masterpieceGenerator/generator_release/releases/latest/download/generator-linux-x86_64.AppImage"
+                target="_blank"
+                rel="noopener"
+              >
+                Download .AppImage
+              </a>
+            </div>
+          </article>
         </div>
       </section>
 
@@ -206,10 +257,9 @@
         </div>
       </section>
 
-      <!-- Hidden until public release -->
-      <section class="section" id="buy" data-license-api-base="https://api.mgen.fun" hidden>
-        <h2>Buy License</h2>
-        <p>Complete secure checkout. Activation key is sent to your email and can also be fetched here.</p>
+      <section class="section" id="buy" data-license-api-base="https://api.mgen.fun">
+        <h2>Buy License — $8.99</h2>
+        <p>One-time payment. Activation key is sent to your email and can also be fetched here.</p>
         <div class="grid buy-grid">
           <article class="card">
             <h3>Create checkout</h3>
@@ -230,48 +280,6 @@
             <p class="checkout-hint">Use a real email. Activation key will be delivered there after payment.</p>
             <p class="checkout-status" data-checkout-status aria-live="polite"></p>
             <p class="checkout-order" data-checkout-order hidden></p>
-          </article>
-          <article class="card">
-            <h3>Check order and key</h3>
-            <form class="checkout-form" data-order-status-form>
-              <label class="field-label" for="order-email">Email</label>
-              <input
-                class="field-input"
-                id="order-email"
-                name="email"
-                type="email"
-                autocomplete="email"
-                placeholder="same email as checkout"
-                required
-              />
-              <input name="provider" type="hidden" value="lemonsqueezy" />
-              <button class="btn btn-secondary" type="submit">Check status</button>
-              <details class="checkout-advanced">
-                <summary>Advanced restore (manual Order ID)</summary>
-                <div class="checkout-form checkout-advanced-form">
-                  <label class="field-label" for="order-id">Order ID</label>
-                  <input
-                    class="field-input"
-                    id="order-id"
-                    name="order_id"
-                    type="text"
-                    placeholder="ord_XXXXXX_XXXXXX"
-                  />
-                </div>
-              </details>
-            </form>
-            <p class="checkout-hint">
-              Order ID is filled automatically after Buy. Use restore only when checking from another
-              browser or device.
-            </p>
-            <p class="checkout-status" data-order-status aria-live="polite"></p>
-            <div class="checkout-license-row" data-order-license-row hidden>
-              <p class="checkout-license" data-order-license></p>
-              <button class="btn btn-secondary checkout-copy-btn" type="button" data-copy-license>
-                Copy key
-              </button>
-            </div>
-            <p class="checkout-copy-status" data-copy-status aria-live="polite"></p>
           </article>
           <article class="card">
             <h3>Activate in app</h3>
@@ -363,6 +371,8 @@
 
       <footer class="footer">
         <span>Masterpiece Generator</span>
+        <a href="#buy">Buy $8.99</a>
+        <a href="#download">Download demo</a>
         <a href="#roadmap">Roadmap</a>
         <a href="/guides/first-5-minutes/">Guides</a>
         <a href="/legal/license.html">License</a>

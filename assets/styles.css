@@ -317,6 +317,19 @@ a {
   outline: none;
 }
 
+.nav-buy {
+  background: linear-gradient(135deg, rgba(42, 211, 255, 0.18), rgba(104, 198, 255, 0.1));
+  border-color: rgba(104, 198, 255, 0.45) !important;
+  color: #a8e6ff !important;
+}
+
+.nav-buy:hover,
+.nav-buy:focus-visible {
+  background: rgba(42, 211, 255, 0.28) !important;
+  border-color: rgba(104, 198, 255, 0.75) !important;
+  color: #d8f4ff !important;
+}
+
 .hero {
   margin-top: 22px;
   border: 1px solid var(--line-strong);
@@ -552,6 +565,44 @@ h1 {
 
 .card-priority h3 {
   color: #dcffe8;
+}
+
+.section-download {
+  border-color: rgba(120, 194, 255, 0.46);
+  background:
+    linear-gradient(160deg, rgba(10, 20, 36, 0.92), rgba(12, 24, 44, 0.9)),
+    radial-gradient(circle at 88% -20%, rgba(42, 211, 255, 0.12), rgba(0, 0, 0, 0) 48%);
+}
+
+.download-grid {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.download-card {
+  min-height: 100%;
+}
+
+.price-highlight {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+}
+
+
+.download-note {
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  color: var(--text-muted, rgba(255,255,255,0.4));
+  line-height: 1.4;
+}
+
+.download-card-feature {
+  border-color: rgba(109, 255, 141, 0.48);
+  background:
+    linear-gradient(160deg, rgba(18, 39, 49, 0.94), rgba(14, 33, 49, 0.92));
+  box-shadow:
+    inset 0 0 0 1px rgba(109, 255, 141, 0.08),
+    0 0 26px rgba(42, 211, 255, 0.1);
 }
 
 .roadmap-grid {
