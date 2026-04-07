@@ -260,6 +260,13 @@
       <section class="section" id="buy" data-license-api-base="https://api.mgen.fun">
         <h2>Buy License — $8.99</h2>
         <p>One-time payment. Activation key is sent to your email and can also be fetched here.</p>
+        <!-- Hidden form required by checkout.js for order status lookup on return -->
+        <form style="display:none" data-order-status-form aria-hidden="true">
+          <input name="email" type="email" autocomplete="email" />
+          <input name="provider" type="hidden" value="lemonsqueezy" />
+          <input name="order_id" type="text" />
+          <button type="submit">Check</button>
+        </form>
         <div class="grid buy-grid">
           <article class="card">
             <h3>Create checkout</h3>
@@ -292,6 +299,16 @@
               Random generation works only with active trial or activated license.
             </p>
             <a class="btn btn-secondary checkout-help-btn" href="/legal/license.html">Open license info</a>
+          </article>
+          <article class="card license-result-card" data-license-result-card hidden>
+            <h3>Payment confirmed</h3>
+            <p class="checkout-status" data-order-status aria-live="polite"></p>
+            <div class="checkout-license-row" data-order-license-row hidden>
+              <p class="checkout-license" data-order-license></p>
+              <button class="btn btn-secondary checkout-copy-btn" type="button" data-copy-license>Copy key</button>
+            </div>
+            <p class="checkout-copy-status" data-copy-status aria-live="polite"></p>
+            <p class="checkout-hint">Copy this key, then paste it in the app under License → Activate.</p>
           </article>
         </div>
       </section>

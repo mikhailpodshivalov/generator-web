@@ -26,6 +26,7 @@
   const orderLicense = checkoutSection.querySelector("[data-order-license]");
   const copyLicenseButton = checkoutSection.querySelector("[data-copy-license]");
   const copyStatus = checkoutSection.querySelector("[data-copy-status]");
+  const licenseResultCard = checkoutSection.querySelector("[data-license-result-card]");
 
   const checkoutSubmitButton = checkoutForm.querySelector("button[type='submit']");
   const statusSubmitButton = orderStatusForm.querySelector("button[type='submit']");
@@ -140,6 +141,9 @@
     clearLicenseOutput();
     setOrderLabel(orderId);
 
+    if (autoTriggered) {
+      hideNode(licenseResultCard, false);
+    }
     setStatus(
       orderStatus,
       autoTriggered
@@ -181,6 +185,7 @@
       const message = safeString(response.payload.message);
 
       if (response.payload.licensed && response.payload.license_key) {
+        hideNode(licenseResultCard, false);
         setStatus(
           orderStatus,
           message || `Payment confirmed (${statusText}). License key is ready.`,
