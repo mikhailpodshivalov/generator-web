@@ -70,6 +70,15 @@
 
       <section class="section section-download" id="download">
         <h2>Download 7-day demo</h2>
+        <article class="card audio-player-card" data-audio-random-player>
+          <div class="audio-controls">
+            <button type="button" class="btn btn-primary" data-audio-action="play">Play random demo</button>
+            <button type="button" class="btn btn-secondary" data-audio-action="next">Next random</button>
+            <button type="button" class="btn btn-secondary" data-audio-action="stop">Stop</button>
+          </div>
+          <p class="audio-status" data-audio-status>Ready: demos loaded</p>
+          <audio class="audio-player" data-audio-element controls preload="none"></audio>
+        </article>
         <div class="grid download-grid">
           <article class="card download-card">
             <h3>Windows x64</h3>
@@ -84,7 +93,6 @@
                 Download .exe
               </a>
             </div>
-            <p class="download-note">SmartScreen may ask to confirm — click "More info → Run anyway".</p>
           </article>
           <article class="card download-card">
             <h3>macOS Apple Silicon</h3>
@@ -177,19 +185,6 @@
         </div>
       </section>
 
-      <section class="section" id="audio-demos">
-        <h2>Random audio demos</h2>
-        <p class="audio-demos-lead">Short sketches. Hit play and cycle through random exports.</p>
-        <article class="card audio-player-card" data-audio-random-player>
-          <div class="audio-controls">
-            <button type="button" class="btn btn-primary" data-audio-action="play">Play random demo</button>
-            <button type="button" class="btn btn-secondary" data-audio-action="next">Next random</button>
-            <button type="button" class="btn btn-secondary" data-audio-action="stop">Stop</button>
-          </div>
-          <p class="audio-status" data-audio-status>Ready: demos loaded</p>
-          <audio class="audio-player" data-audio-element controls preload="none"></audio>
-        </article>
-      </section>
 
       <section class="section" id="showcase">
         <!-- TODO: replace all three showcase videos when new captures are ready -->
