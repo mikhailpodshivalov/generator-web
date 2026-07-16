@@ -61,12 +61,20 @@
             <span class="chip">master FX: comp / EQ / limiter / tape sat</span>
             <span class="chip">song mode + pattern chaining</span>
             <span class="chip">one-button full song generation</span>
+            <span class="chip">up to 16 tracks</span>
+            <span class="chip">26 insert effects + 4 master FX</span>
+            <span class="chip">mixer + stem export</span>
+            <span class="chip">mastered stereo bus (comp / EQ / limiter)</span>
+            <span class="chip">Elektron-style trig conditions + micro-timing</span>
+            <span class="chip">Octatrack-style scene morph</span>
+            <span class="chip">retrig / note-repeat perform mode</span>
+            <span class="chip">resample to sample</span>
             <span class="chip">per-track polyrhythm (L/D/T)</span>
             <span class="chip">groove table + swing</span>
             <span class="chip">3-lane LFO modulation</span>
             <span class="chip">auto-gen live note engine</span>
             <span class="chip">midi out + cc p-lock</span>
-            <span class="chip">render WAV / MP3 / MIDI</span>
+            <span class="chip">render WAV / MP3 / MIDI + stems</span>
           </div>
         </div>
       </section>
@@ -255,6 +263,56 @@
         </div>
       </section>
 
+      <section class="section" id="pro">
+        <h2>Play it like hardware</h2>
+        <p>Random is optional. Underneath is a full Elektron-grade sequencer you can drive entirely by hand.</p>
+        <div class="grid">
+          <article class="card">
+            <h3>Write tracks from scratch</h3>
+            <p>
+              No randomization required. Place trigs and notes step by step, dial the synth, and build
+              a whole track by hand — the same hands-on flow as a hardware Elektron box.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Elektron-style trig menu</h3>
+            <p>
+              Every step carries conditional trigs (X:Y cycle, FILL, PRE, 1ST, NEI and their inverses),
+              micro-timing nudge, retrig / ratchet with its own rate, trig probability, slide, accent,
+              note, length, and parameter locks.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Octatrack-style scene morph</h3>
+            <p>
+              Store a BASE and a SCENE snapshot of your parameters, then crossfade between them with a
+              single morph control — manually or on an auto-morph shape for constantly evolving motion.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Perform mode</h3>
+            <p>
+              Live PADS and note-repeat: hold to roll at any retrig rate, play sample slices from the
+              keys, and hit FILL to drop in your FILL-conditioned trigs on the fly.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Up to 16 tracks</h3>
+            <p>
+              Start with the eight core slots and add up to eight more — sixteen addressable tracks,
+              each with its own source, sequencer lane, FX, and modulation.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Resample &amp; source freedom</h3>
+            <p>
+              Resample a track, the full mix, or a region into a fresh sample, then play it back like
+              any other. Drop any FM patch or any sample onto any slot or single step.
+            </p>
+          </article>
+        </div>
+      </section>
+
       <section class="section" id="showcase">
         <!-- TODO: replace all three showcase videos when new captures are ready -->
         <h2>Watch the workflow</h2>
@@ -316,6 +374,54 @@
           <article class="card">
             <h3>3. Generate, Edit, and Export Song</h3>
             <p>Generate a full song, edit arrangement and details, then export WAV, MP3, and MIDI for DAW workflow.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="mix">
+        <h2>Studio-grade sound, mixer &amp; master</h2>
+        <p>From per-track inserts to a mastered stereo bus — MG finishes the track, not just the sketch.</p>
+        <div class="grid">
+          <article class="card card-priority">
+            <h3>26 insert effects</h3>
+            <ul class="inline-list">
+              <li>Three insert FX slots per track, freely ordered</li>
+              <li>Delay, reverb, chorus, phaser, flanger, resonator, freq shifter</li>
+              <li>Filters: multimode, low-pass, and a resonant super filter</li>
+              <li>Saturation: drive, distortion, tape, tube, console, wavefolder</li>
+              <li>Character: lo-fi, vinyl, cassette, ring mod, slicer, glitch, granular cloud</li>
+              <li>Dynamics: compressor and transient shaper</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Mixer</h3>
+            <ul class="inline-list">
+              <li>Per-channel level, mute, and send controls</li>
+              <li>Live metering across every track</li>
+              <li>Send effects shared across the mix</li>
+              <li>Stem export — bounce each track out for your DAW</li>
+              <li>One window over all 16 tracks</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Master chain</h3>
+            <ul class="inline-list">
+              <li>Four master FX slots plus a dedicated master bus</li>
+              <li>Bus compressor / glue and a 3-band EQ</li>
+              <li>True-peak limiter with gain-reduction metering</li>
+              <li>Mid/side width and tape / tube / console saturation</li>
+              <li>LUFS-I, LUFS-S, and true-peak readouts</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Sound quality &amp; export</h3>
+            <ul class="inline-list">
+              <li>Oversampled, anti-aliased synth and FX engines</li>
+              <li>True-peak-safe output measured against internal benchmarks</li>
+              <li>Native Rust engine, low CPU and memory</li>
+              <li>Render to WAV (16 / 24-bit), MP3, and MIDI</li>
+              <li>Per-track stems for mixing and mastering elsewhere</li>
+            </ul>
           </article>
         </div>
       </section>
@@ -417,8 +523,8 @@
           </article>
           <article class="card phase-card">
             <p class="phase-tag">Planned</p>
-            <h3>Per-Track Song Export + MIDI for DAW</h3>
-            <p>Export full songs as per-track stems plus a standard MIDI file for fast arrangement in any DAW.</p>
+            <h3>Full-Song Multitrack Bounce</h3>
+            <p>One-click export of an entire arrangement as per-track stems plus MIDI, on top of the per-track stem export already in the mixer.</p>
           </article>
           <article class="card phase-card">
             <p class="phase-tag">Planned</p>
