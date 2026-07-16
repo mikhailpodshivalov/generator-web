@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Masterpiece Generator</title>
+    <title>Masterpiece Generator — AI, FM & sample groovebox</title>
     <meta
       name="description"
-      content="Masterpiece Generator is a desktop groovebox with song mode, random FX, random p-locks, MIDI Out + CC p-lock, per-slot and full-track randomization, and instant WAV/MP3 export."
+      content="Masterpiece Generator is a desktop groovebox that fuses neural AI melody generation, a Digitone-class 4-operator FM synth, and a full sample engine with your own packs — plus deep per-track control, song mode, MIDI Out, and instant WAV/MP3/MIDI export."
     />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
     <link rel="icon" type="image/png" sizes="48x48" href="/assets/img/favicon-48.png" />
@@ -45,25 +45,28 @@
           <p class="kicker">mgen.fun</p>
           <h1>Start with a sketch, finish with a masterpiece</h1>
           <p class="lead">
-            No AI prompts, no sample packs. MG synthesizes drums, bass, and melodic slots internally,
-            with randomization that stays musical, fresh, and controllable.
+            Three sound engines in one groovebox: neural AI melodies and basslines, a Digitone-class
+            4-operator FM synth, and a full sample engine that runs your own packs. Randomization
+            that stays musical, fresh, and fully under your control.
           </p>
           <div class="cta-row">
             <a class="btn btn-primary" href="/guides/first-5-minutes/">Open 1 min guide</a>
           </div>
           <div class="stat-row">
-            <span class="chip">algorithmic generation, not AI</span>
-            <span class="chip">chaos + euclid rhythms</span>
-            <span class="chip">internal synths, no samples</span>
-            <span class="chip">hands-on sequencer</span>
-            <span class="chip">deep synth tweaking</span>
+            <span class="chip">neural AI melodies + basslines</span>
+            <span class="chip">4-op FM synth, 16 algorithms</span>
+            <span class="chip">sample engine + your own packs</span>
+            <span class="chip">17 genre-aware voices</span>
+            <span class="chip">AI harmony conductor</span>
+            <span class="chip">master FX: comp / EQ / limiter / tape sat</span>
             <span class="chip">song mode + pattern chaining</span>
             <span class="chip">one-button full song generation</span>
-            <span class="chip">random FX + p-lock rand</span>
-            <span class="chip">midi out + cc p-lock shipped</span>
-            <span class="chip">slot rand + full-track rand</span>
-            <span class="chip">render to WAV or MP3</span>
-            <span class="chip">pattern bank</span>
+            <span class="chip">per-track polyrhythm (L/D/T)</span>
+            <span class="chip">groove table + swing</span>
+            <span class="chip">3-lane LFO modulation</span>
+            <span class="chip">auto-gen live note engine</span>
+            <span class="chip">midi out + cc p-lock</span>
+            <span class="chip">render WAV / MP3 / MIDI</span>
           </div>
         </div>
       </section>
@@ -129,46 +132,59 @@
       </section>
 
       <section class="section" id="tour">
-        <h2>Why MG feels like an instrument</h2>
-        <p>Direct controls, synth-generated sound, and stable random that you can actually keep.</p>
+        <h2>Three sound engines, one instrument</h2>
+        <p>AI, FM, and samples are equal first-class sources — mix them freely across the eight slots.</p>
         <div class="grid">
           <article class="card">
-            <h3>No AI, No Samples</h3>
-            <p>No prompt-driven generation and no sample library dependency. Sound comes from the built-in synth engines.</p>
+            <h3>Neural AI + Harmony Conductor</h3>
+            <p>
+              Lead lines come from neural voices trained on a licensed MIDI corpus and tuned per
+              genre. An AI harmony conductor then sets the chord movement bar by bar and drives the
+              basslines to match, so melody and bass stay locked in the same key. Every result is
+              seed-driven — recall or reroll it exactly.
+            </p>
           </article>
           <article class="card">
-            <h3>Global + Per-Slot Random</h3>
-            <p>Randomize pattern, sound, FX, and p-locks for the whole track, or target a single slot without destroying the rest.</p>
+            <h3>Digitone-class FM Synth</h3>
+            <p>
+              A 4-operator FM TONE engine with 16 algorithms, per-operator waveforms and modes,
+              polyphonic leads, feedback, and macro control. Browse the FM preset bank, save your own,
+              or bounce any patch straight to a sample.
+            </p>
           </article>
           <article class="card">
-            <h3>Song Mode + Full Step Control</h3>
-            <p>Build chained song structure with repeat-aware steps, then edit trigger, accent, slide, probability, note, and p-lock motion per step.</p>
+            <h3>Full Sample Engine</h3>
+            <p>
+              Every slot can play samples: a 260-sound factory bundle, or drop in your own sample
+              packs and randomize patterns with them. Multisample per track, per-step p-locks,
+              envelopes, filters, and a 3-lane LFO on top.
+            </p>
           </article>
         </div>
       </section>
 
       <section class="section" id="sequencer">
         <h2>Random, sequencer and instrument set</h2>
-        <p>Algorithmic random, full step sequencing, and deep synth control.</p>
+        <p>Seed-driven generation, full step sequencing, and deep sound control across every slot.</p>
         <div class="grid">
           <article class="card card-priority">
             <h3>Random engine</h3>
             <ul class="inline-list">
-              <li>Chaos and Euclid scales shape groove density and rhythm distribution</li>
+              <li>17 genre-aware profiles with neural AI leads and an AI harmony conductor</li>
               <li>Independent random layers: Pattern, Instrument, FX, and P-lock</li>
               <li>Every random layer supports global reroll and per-slot reroll</li>
-              <li>Multiple groove families plus dedicated bass and lead generation algorithms</li>
-              <li>No AI prompts and no sample packs, pure algorithmic track construction</li>
-              <li>Results stay musical, fresh, and non-repetitive</li>
+              <li>Chaos and Euclid scales shape groove density and rhythm distribution</li>
+              <li>Dedicated bass and lead generation, kept in key across the track</li>
+              <li>Deterministic seeds — results stay musical, fresh, and recallable</li>
             </ul>
           </article>
           <article class="card">
             <h3>Sequencer</h3>
             <ul class="inline-list">
-              <li>Pattern Bank with 99 pattern slots</li>
-              <li>Pattern length adjustable from 8 to 32 steps</li>
+              <li>256-slot pattern bank for building up a full set</li>
+              <li>Pattern length up to 128 steps / 8 bars, per-track lengths for polyrhythm</li>
               <li>Song Mode with pattern chaining and repeat-aware progression</li>
-              <li>Per-step trigger, slide, probability, accent, and note editing</li>
+              <li>Per-step trigger, slide, probability, accent, note, and length editing</li>
               <li>MIDI Out with per-step CC p-lock lanes</li>
               <li>Build and refine grooves step by step</li>
             </ul>
@@ -176,18 +192,68 @@
           <article class="card">
             <h3>Instrument set</h3>
             <ul class="inline-list">
-              <li>Kicks, Snares, HiHats, Toms, Basses, Leads, Percussions</li>
+              <li>Kicks, Snares, HiHats, Toms, Basses, Leads, Pads, Percussion</li>
+              <li>Any slot runs a sample, the FM synth, or an AI-generated part</li>
               <li>Randomize instrument sound independently from rhythm</li>
               <li>Random FX for each slot and for the whole track in one action</li>
-              <li>Random p-lock motion with deterministic seed behavior</li>
+              <li>Master chain: compressor, EQ, limiter, and tape / tube / console saturation</li>
               <li>Route movement to external gear through MIDI Out + CC p-lock</li>
-              <li>Dedicated synth controls for each instrument</li>
-              <li>Sculpt tone manually from sketch to final mix</li>
             </ul>
           </article>
         </div>
       </section>
 
+
+      <section class="section" id="control">
+        <h2>Deep per-track control &amp; modulation</h2>
+        <p>Go past the grid: shape timing, groove, and movement independently on every track.</p>
+        <div class="grid">
+          <article class="card">
+            <h3>Your own sample packs</h3>
+            <p>
+              Point MG at a folder of your samples and they show up alongside the factory bundle —
+              loadable on any slot and fully part of the random engine, so patterns get generated with
+              your own sounds.
+            </p>
+          </article>
+          <article class="card">
+            <h3>L / D / T — per-track timing</h3>
+            <p>
+              Set each track's Length, play Direction (forward, reverse, ping-pong, random), and time
+              scale independently. Different lengths per track give you polyrhythms and evolving loops
+              for free.
+            </p>
+          </article>
+          <article class="card">
+            <h3>G — groove table</h3>
+            <p>
+              An M8-style per-track groove table for shuffle and micro-timing, with classic swing
+              folded in. Push and pull individual steps to give each part its own feel.
+            </p>
+          </article>
+          <article class="card">
+            <h3>LFO — 3-lane modulation</h3>
+            <p>
+              Three modulation lanes per track with many destinations, tempo-synced or free-running.
+              Automate cutoff, pitch, FM macros, sample parameters, and more.
+            </p>
+          </article>
+          <article class="card">
+            <h3>GEN — auto-gen engine</h3>
+            <p>
+              Turn a track into a live note generator that keeps composing over your set Length,
+              following the AI harmony conductor so the movement always fits the track.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Song Mode</h3>
+            <p>
+              Chain patterns into a full song with repeat-aware steps and playback-follow, or generate
+              a complete arrangement with one button, then edit it down to the detail.
+            </p>
+          </article>
+        </div>
+      </section>
 
       <section class="section" id="showcase">
         <!-- TODO: replace all three showcase videos when new captures are ready -->
@@ -316,13 +382,28 @@
         <div class="grid roadmap-grid">
           <article class="card phase-card">
             <p class="phase-tag">Shipped</p>
-            <h3>Song Mode + Live Chaining</h3>
-            <p>Pattern chaining, repeat-aware song steps, and playback-follow mode above the pattern bank.</p>
+            <h3>Neural AI Generation</h3>
+            <p>Genre-aware neural lead voices plus an AI harmony conductor keeping chords, bass, and leads in key.</p>
           </article>
           <article class="card phase-card">
             <p class="phase-tag">Shipped</p>
-            <h3>Random FX + P-Lock Layers</h3>
-            <p>Random FX and random p-lock are first-class actions with both per-slot and full-track scope.</p>
+            <h3>FM Synth Engine</h3>
+            <p>Digitone-class 4-operator FM TONE voice with 16 algorithms, per-op modes, presets, and bounce-to-sample.</p>
+          </article>
+          <article class="card phase-card">
+            <p class="phase-tag">Shipped</p>
+            <h3>Sample Engine + Your Packs</h3>
+            <p>Samples on every slot, a 260-sound factory bundle, and your own sample folders folded into the random engine.</p>
+          </article>
+          <article class="card phase-card">
+            <p class="phase-tag">Shipped</p>
+            <h3>Master FX Chain</h3>
+            <p>Bus compressor, 3-band EQ, true-peak limiter, mid/side width, LUFS metering, and tape / tube / console saturation.</p>
+          </article>
+          <article class="card phase-card">
+            <p class="phase-tag">Shipped</p>
+            <h3>Song Mode + Live Chaining</h3>
+            <p>Pattern chaining, repeat-aware song steps, and playback-follow mode above the pattern bank.</p>
           </article>
           <article class="card phase-card">
             <p class="phase-tag">Shipped</p>
@@ -361,7 +442,19 @@
         <h2>FAQ</h2>
         <div class="faq-grid">
           <details class="qa" open>
-            <summary>How long is the demo?</summary>
+            <summary>Does MG use AI?</summary>
+            <p>Yes — melodic lead lines are generated by neural voices trained on a licensed MIDI corpus, tuned per genre. An AI harmony conductor sets the chords for each bar and steers the basslines to match, keeping the whole track in key. No cloud, no prompts: generation runs fully offline on your machine.</p>
+          </details>
+          <details class="qa">
+            <summary>Can I use my own samples?</summary>
+            <p>Yes. MG ships with a factory sample bundle, and you can point it at your own sample folders. Your sounds load on any slot and take part in random pattern generation just like the built-in ones.</p>
+          </details>
+          <details class="qa">
+            <summary>What is the FM synth?</summary>
+            <p>A 4-operator FM TONE engine in the spirit of the Elektron Digitone: 16 algorithms, per-operator waveforms and modes, polyphonic leads, a preset bank, and bounce-to-sample. It sits next to the sample engine on every slot.</p>
+          </details>
+          <details class="qa">
+            <summary>How long is the trial?</summary>
             <p>Trial period is 7 days, starting after first successful activation.</p>
           </details>
           <details class="qa">
