@@ -480,6 +480,12 @@ h1 {
   gap: 8px;
 }
 
+.hero-chips {
+  position: relative;
+  z-index: 1;
+  margin-top: 18px;
+}
+
 .chip {
   border-radius: 999px;
   border: 1px solid rgba(128, 179, 245, 0.38);
@@ -580,6 +586,12 @@ h1 {
 
 .download-card {
   min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.download-card .cta-row {
+  margin-top: auto;
 }
 
 .price-highlight {
@@ -662,7 +674,7 @@ h1 {
   display: block;
   width: 100%;
   height: auto;
-  max-height: 290px;
+  max-height: min(72vh, 640px);
   background: #000;
 }
 
